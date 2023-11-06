@@ -1,0 +1,14 @@
+<div class="list-group-item clearfix" [ngClass]="getStatusClass(task)">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ task.description }}</h4>
+        <p class="list-group-item-text">Due by: {{ task.dueDate }}</p>
+    </div>
+    <span class="pull-right">
+        <span class="pull-right" class="badge" style="margin-right: 5px;">
+            {{ task.status }}
+        </span>
+        <a class="btn btn-primary btn-circle" style="margin-right: 5px;" [routerLink]="['../tasks/edit-task', id]"
+        routerLinkActive="active">Edit</a>
+        <button class="btn btn-danger btn-circle" (click)="deleteTask(id)">Delete</button>
+    </span>
+</div>

@@ -1,0 +1,17 @@
+.complete {
+    background-color: #c8f7c5; /* Light green background for completed tasks */
+  }
+  
+  .not-started {
+    background-color: #ffb0b0; /* Light red background for not started tasks */
+  }
+
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 9px 3px;
+    font-size: 8px;
+    line-height: 1.42;
+    border-radius: 15px;
+  }

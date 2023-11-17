@@ -25,8 +25,8 @@ export class TaskEditComponent {
 
   ngOnInit() {
     if (this.editMode !== 'new'){
-      this.route.paramMap.subscribe((params: ParamMap) => {
-        const taskId = +params.get('id'); // Get the task ID from the route parameter
+      this.route.parent.params.subscribe(params => {
+        const taskId = +params['id']; // Get the task ID from the route parameter
         this.taskService.getTaskById(taskId).subscribe((task: Task) => {
           this.task = task;  // Fetch the task by ID
         });
@@ -36,14 +36,10 @@ export class TaskEditComponent {
 
   onFormSubmit() {
     if (this.editMode === 'new') {
-      // Create a new task
       this.taskService.createTask(this.task).subscribe(newTask => {
-        // Handle the new task as needed (e.g., display success message)
       });
     } else {
-      // Update an existing task
       this.taskService.updateTask(this.task).subscribe(updatedTask => {
-        // Handle the updated task as needed (e.g., display success message)
       });
     }
 /*     this.taskService.updateTask(this.task).subscribe(updatedTask => {
@@ -52,3 +48,6 @@ export class TaskEditComponent {
   }
 
 }
+
+// this.route.paramMap.subscribe((params: ParamMap) => {
+  // const taskId = +params.get('id'); // Get the task ID from the route parameter

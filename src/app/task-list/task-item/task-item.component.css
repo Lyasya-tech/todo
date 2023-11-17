@@ -6,6 +6,10 @@
     background-color: #ffb0b0; /* Light red background for not started tasks */
   }
 
+  .in-progress {
+    background-color: #FFFFE0; /* Light yellow background for tasks in progress */
+  }
+
   .btn-circle {
     width: 30px;
     height: 30px;

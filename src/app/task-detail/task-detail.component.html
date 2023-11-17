@@ -1,1 +1,22 @@
-<p>task-detail works!</p>
+<div class="task-details-container">
+    <h2>Task Details</h2>
+    <div class="details-item">
+        <strong>ID:</strong> {{ task.id }}
+    </div>
+    <div class="details-item">
+        <strong>Description:</strong> {{ task.description }}
+    </div>
+    <div class="details-item">
+        <strong>Due Date:</strong> {{ task.dueDate }}
+    </div>
+    <div class="details-item">
+        <strong>Status:</strong> {{ task.status }}
+    </div>
+    <br>
+    <!-- <a class="btn btn-primary " style="margin-right: 5px;" [routerLink]="['../edit-task', task.id]" -->
+    <button class="btn btn-primary " style="margin-right: 5px;" routerLink="edit"
+        routerLinkActive="active">Edit</button>
+    <button class="btn btn-danger " (click)="deleteTask(task.id)">Delete</button>
+</div>
+
+<router-outlet></router-outlet>

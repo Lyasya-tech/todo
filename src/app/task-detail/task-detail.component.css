@@ -1,0 +1,33 @@
+.task-details-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-item {
+    margin-top: 10px;
+  }
+  
+  button.btn.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    /* padding: 10px 15px; */
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.btn.btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  button.btn.btn-danger {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+button.btn.btn-danger:hover {
+    background-color: #cc0000;
+}

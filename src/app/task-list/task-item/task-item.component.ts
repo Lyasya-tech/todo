@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Task } from 'src/app/models/task.model';
 import { TaskService } from '../task.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-item',
@@ -12,14 +13,21 @@ export class TaskItemComponent {
   @Input() id: number;
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   getStatusClass(task: Task) {
     return {
       'complete': task.status === 'complete',
-      'not-started': task.status === 'not started'
+      'not-started': task.status === 'not started',
+      'in-progress': task.status === 'in progress'
     }
+  }
+
+  navigateToDetails(taskId: number){
+    this.router.navigate([taskId], { relativeTo: this.route });
   }
 
   deleteTask(id: number) {

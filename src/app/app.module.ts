@@ -17,6 +17,7 @@ import { taskResolver } from './task-list/task.resolver';
 import { UserItemComponent } from './users/user-item/user-item.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserService } from './users/user.service';
+import { AssignmentsComponent } from './assignments/assignments.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UserService } from './users/user.service';
     TaskItemComponent,
     UserItemComponent,
     UserEditComponent,
+    AssignmentsComponent,
   ],
   imports: [
     BrowserModule,

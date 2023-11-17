@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Task } from '../models/task.model';
 
 
@@ -9,7 +9,7 @@ import { Task } from '../models/task.model';
 })
 export class TaskService {
   private apiUrl = 'http://localhost:3000/task'; 
-  private taskListSubject = new Subject<Task[]>();
+  private taskListSubject = new BehaviorSubject<Task[]>([]);
 
   constructor(private http: HttpClient) {
     this.fetchAndNotifyTaskList();

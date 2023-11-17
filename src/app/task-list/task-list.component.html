@@ -1,8 +1,25 @@
 <div class="row">
     <div class="col-md-5">
         <h2>Task List</h2>
+        <!-- search -->
+        <div class="row">
+            <div class="col-md-5">
+              <div class="input-group">
+                <!-- <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
+                </div> -->
+                <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search tasks">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+<!--         <input type="text" [(ngModel)]="searchQuery" placeholder="Search tasks">
+        <button style="margin-left: 10px;" class="btn btn-primary" (click)="searchTasks()">Search</button> -->
+        <hr>
         <button class="btn btn-primary" (click)="createNewTask()" style="margin-bottom: 10px;">Create New Task</button>
-        <app-task-item *ngFor="let task of tasks, let i = index" [task]="task" [id]="task.id">
+        <app-task-item *ngFor="let task of filteredTasks, let i = index" [task]="task" [id]="task.id">
         </app-task-item>
     </div>
 

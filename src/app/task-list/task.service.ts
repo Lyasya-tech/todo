@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { Task } from '../models/task.model';
 
 
@@ -62,6 +62,17 @@ export class TaskService {
     const url = `${this.apiUrl}/${taskId}`;
     console.log(url);
     return this.http.get<Task>(url);
+  }
+
+  // Filter tasks based on the query
+  searchTasks(query: string): Observable<Task[]> {
+    return this.getTasks().pipe(
+      map(tasks => {
+        return tasks.filter(task =>
+          task.description.toLowerCase().includes(query.toLowerCase())
+        );
+      })
+    );
   }
 
   

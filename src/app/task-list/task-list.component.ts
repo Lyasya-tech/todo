@@ -9,9 +9,11 @@ import { Subscription, map } from 'rxjs';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
   subscription: Subscription;
+  searchQuery: string = '';
+  filteredTasks: Task[] = [];
 
   constructor(private taskService: TaskService,
     private router: Router,
@@ -31,8 +33,9 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit triggered')
-    this.taskService.getTaskListUpdates().subscribe(updatedTasks => {
-      this.tasks = updatedTasks;
+    this.subscription = this.taskService.getTaskListUpdates().subscribe(updatedTasks => {
+      // this.tasks = updatedTasks;
+      this.filteredTasks = updatedTasks;
     });
 
 /*     this.taskService.getTasks().subscribe((data: Task[]) => {
@@ -44,7 +47,13 @@ export class TaskListComponent implements OnInit {
     this.router.navigate(['new-task'], {relativeTo: this.route});
   }
 
-/*   ngOnDestroy(): void {
+  searchTasks() {
+    this.taskService.searchTasks(this.searchQuery).subscribe(filteredTasks => {
+      this.filteredTasks = filteredTasks;
+    });
+  }
+
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  } */
+  }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Task } from '../models/task.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../task-list/task.service';
 
 @Component({
@@ -15,7 +15,11 @@ export class TaskDetailComponent {
     dueDate: '',
     status: ''
   };
-  constructor(private route: ActivatedRoute, private taskService: TaskService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private taskService: TaskService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -30,7 +34,8 @@ export class TaskDetailComponent {
     const confirmDelete = confirm('Are you sure you want to delete this task?');
 
     if (confirmDelete) {
-      this.taskService.deleteTask(id).subscribe(() => { })
+      this.taskService.deleteTask(id).subscribe(() => { }),
+      this.router.navigate(['/']);
     }
   }
 }

@@ -14,6 +14,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   searchQuery: string = '';
   filteredTasks: Task[] = [];
+  clickedTaskId: number = null;
 
   constructor(private taskService: TaskService,
     private router: Router,
@@ -55,5 +56,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  handleButtonClick(taskId: number){
+    this.clickedTaskId = taskId;
   }
 }

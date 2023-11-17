@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from 'src/app/models/task.model';
 import { TaskService } from '../task.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TaskItemComponent {
   @Input() task: Task;
   @Input() id: number;
+  @Output() onButtonClick: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(
     private taskService: TaskService,
@@ -37,4 +38,9 @@ export class TaskItemComponent {
       this.taskService.deleteTask(id).subscribe(() => { })
     }
   }
+
+  emitButtonClick() {
+    this.onButtonClick.emit(this.task.id);
+  }
+
 }

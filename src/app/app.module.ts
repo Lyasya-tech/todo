@@ -14,6 +14,9 @@ import { TaskService } from './task-list/task.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { TaskItemComponent } from './task-list/task-item/task-item.component';
 import { taskResolver } from './task-list/task.resolver';
+import { UserItemComponent } from './users/user-item/user-item.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserService } from './users/user.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { taskResolver } from './task-list/task.resolver';
     UsersComponent,
     NavigationComponent,
     DropdownDirective,
-    TaskItemComponent
+    TaskItemComponent,
+    UserItemComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,7 @@ import { taskResolver } from './task-list/task.resolver';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [TaskService],
+  providers: [TaskService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

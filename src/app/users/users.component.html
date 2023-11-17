@@ -1,1 +1,14 @@
-<p>users works!</p>
+<div class="row">
+    <div class="col-md-5">
+        <h2>Users</h2>
+        <button class="btn btn-primary" (click)="createNewUser()" style="margin-bottom: 10px;">Create New User</button>
+        <app-user-item *ngFor="let user of users, let i = index" [user]="user" [id]="user.id">
+        </app-user-item>
+    </div>
+
+        <div class="col-md-7">
+            <div class="edit-user-container">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+</div>

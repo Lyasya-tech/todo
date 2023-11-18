@@ -1,1 +1,44 @@
-<p>assignments works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Task</th>
+            <th>Time of assignment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let assignment of assignments">
+
+            <td id="userCell"> {{ assignment.userId}}</td>
+            <td id="taskCell">{{ assignment.taskId}}</td>
+            <td id="otherCell">{{ assignment.timestamp| date : "dd.MM.yyyy HH:mm"}}</td> 
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+    <p>
+        Here you can assign user to task.
+    </p>
+
+<div class="dropdown-container">
+    <div class="dropdown">
+        <label for="userDropdown">User:</label>
+        <select id="userDropdown" [(ngModel)]="assignment.userId">
+            <option value="1">User 1</option>
+            <option value="2">User 2</option>
+            <option value="3">User 3</option>
+        </select>
+    </div>
+
+    <div class="dropdown">
+        <label for="taskDropdown">Task:</label>
+        <select id="taskDropdown" [(ngModel)]="assignment.taskId">
+            <option value="1">Task 1</option>
+            <option value="2">Task 2</option>
+            <option value="3">Task 3</option>
+        </select>
+    </div>
+</div>
+
+<button class="btn btn-primary" (click)="createNewAssignment()"> Assign </button>

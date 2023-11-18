@@ -4,14 +4,18 @@
             <th>User</th>
             <th>Task</th>
             <th>Time of assignment</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor= "let assignment of assignments">
 
-            <td id="userCell"> {{ assignment.userId}}</td>
-            <td id="taskCell">{{ assignment.taskId}}</td>
-            <td id="otherCell">{{ assignment.timestamp| date : "dd.MM.yyyy HH:mm"}}</td> 
+            <td id="userCell"> {{assignment.userId}}</td>
+            <td id="taskCell">{{assignment.taskId}}</td>
+            <td id="otherCell">{{assignment.timestamp| date : "dd.MM.yyyy HH:mm"}}</td> 
+            <td> <button class="btn btn-primary" (click)="editAssignemnt()">edit</button></td>
+            <td> <button class="btn btn-danger" (click)="deleteAssignemnt()">delete</button></td>
         </tr>
     </tbody>
 </table>

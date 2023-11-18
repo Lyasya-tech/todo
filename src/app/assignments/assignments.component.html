@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor= "let assignment of assignments">
 
-            <td id="userCell"> {{ assignment.userId}}</td>
+            <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
             <td id="taskCell">{{ assignment.taskId}}</td>
             <td id="otherCell">{{ assignment.timestamp| date : "dd.MM.yyyy HH:mm"}}</td> 
         </tr>

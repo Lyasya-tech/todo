@@ -26,16 +26,14 @@
           </div>
           <div class="form-group">
             <label for="email">eMail</label>
-            <select
+            <input
+              type="text"
               class="form-control"
               id="email"
               name="email"
               [(ngModel)]="user.email"
               required
-            >
-              <option value="not started">Not Started</option>
-              <option value="complete">Complete</option>
-            </select>
+            />
           </div>
             <button *ngIf="editMode === 'new'" type="submit" class="btn btn-primary">Create User</button>
             <button *ngIf="editMode !== 'new'" type="submit" class="btn btn-primary">Update User</button>

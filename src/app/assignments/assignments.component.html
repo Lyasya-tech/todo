@@ -29,9 +29,9 @@
     <div class="dropdown">
         <label for="userDropdown">User:</label>
         <select id="userDropdown" [(ngModel)]="assignment.userId">
-            <option value="1">User 1</option>
-            <option value="2">User 2</option>
-            <option value="3">User 3</option>
+            <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+            <!-- <option value="2">User 2</option> -->
+            <!-- <option value="3">User 3</option> -->
         </select>
     </div>
 

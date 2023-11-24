@@ -3,6 +3,8 @@ import { TaskService } from './task.service';
 import { Task } from '../models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
+import { jsPDF } from 'jspdf';
+import { TaskPdfService } from './task-pdf.service';
 
 @Component({
   selector: 'app-task-list',
@@ -16,21 +18,24 @@ export class TaskListComponent implements OnInit, OnDestroy {
   filteredTasks: Task[] = [];
   selectedTaskId: number = null;
 
-  constructor(private taskService: TaskService,
+  constructor(
+    private taskService: TaskService,
     private router: Router,
-    private route: ActivatedRoute) {
-      
-      console.log('constructor initiated');
+    private route: ActivatedRoute,
+    private pdfService: TaskPdfService
+  ) {
 
-/*       this.route.data.subscribe(data => {
-        console.log('Resolved Data:', data.resolvedTasks.resolvedTasks);
-        console.log(typeof data.resolvedTasks)
+    console.log('constructor initiated');
 
-        this.tasks = data.resolvedTasks.resolvedTasks; // Set this.tasks when the data is available
+    /*       this.route.data.subscribe(data => {
+            console.log('Resolved Data:', data.resolvedTasks.resolvedTasks);
+            console.log(typeof data.resolvedTasks)
+    
+            this.tasks = data.resolvedTasks.resolvedTasks; // Set this.tasks when the data is available
+    
+          }); */
 
-      }); */
-
-    }
+  }
 
   ngOnInit() {
     console.log('ngOnInit triggered')
@@ -39,13 +44,13 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.filteredTasks = updatedTasks;
     });
 
-/*     this.taskService.getTasks().subscribe((data: Task[]) => {
-      this.tasks = data;
-    }); */
+    /*     this.taskService.getTasks().subscribe((data: Task[]) => {
+          this.tasks = data;
+        }); */
   }
 
   createNewTask() {
-    this.router.navigate(['new-task'], {relativeTo: this.route});
+    this.router.navigate(['new-task'], { relativeTo: this.route });
   }
 
   searchTasks() {
@@ -58,7 +63,21 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onTaskSelected(taskId: number){
+  onTaskSelected(taskId: number) {
     this.selectedTaskId = taskId;
   }
+
+  generatePDF() {
+    this.pdfService.generatePdf(this.filteredTasks);
+/*     const pdf = new jsPDF();
+
+    pdf.text('Task Report', 10, 10);
+    this.filteredTasks.forEach((task, index) => {
+      const yPos = 20 + index * 10;
+      pdf.text(`${task.id}. ${task.description} - ${task.status}`, 10, yPos);
+    });
+
+    pdf.save('task_report.pdf'); */
+  }
+
 }

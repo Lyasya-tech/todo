@@ -18,7 +18,17 @@
         <!--         <input type="text" [(ngModel)]="searchQuery" placeholder="Search tasks">
         <button style="margin-left: 10px;" class="btn btn-primary" (click)="searchTasks()">Search</button> -->
         <hr>
-        <button class="btn btn-primary" (click)="createNewTask()" style="margin-bottom: 10px;">Create New Task</button>
+
+        <div class="row">
+            <div class="col-md-5 d-flex justify-content-between">
+                <button class="btn btn-primary" (click)="createNewTask()">Create New Task</button>
+            </div>
+            <div class="col text-right" style="padding-right: 12px;">
+                <button class="btn btn-secondary" (click)="generatePDF()">Generate PDF Report</button>
+            </div>
+        </div>
+        <hr>
+        
         <app-task-item *ngFor="let task of filteredTasks,let i = index" [task]="task" [id]="task.id"
             (taskSelected)="onTaskSelected($event)">
         </app-task-item>
@@ -27,13 +37,11 @@
             <p>The following is for demonstration purposes to showcase the use of @Output</p>
             <p>You clicked on the task with ID: {{ selectedTaskId }}</p>
         </div>
+
     </div>
 
     <div class="col-md-7">
-        <!-- <div class="edit-task-container"> -->
         <router-outlet></router-outlet>
-        <!-- </div> -->
-
     </div>
 
 

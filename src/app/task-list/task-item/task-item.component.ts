@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TaskItemComponent {
   @Input() task: Task;
   @Input() id: number;
-  @Output() onButtonClick: EventEmitter<number> = new EventEmitter<number>();
+  @Output() taskSelected: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(
     private taskService: TaskService,
@@ -39,8 +39,8 @@ export class TaskItemComponent {
     }
   }
 
-  emitButtonClick() {
-    this.onButtonClick.emit(this.task.id);
+  emitSelectedTask() {
+    this.taskSelected.emit(this.task.id);
   }
 
 }

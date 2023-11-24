@@ -16,7 +16,8 @@
     <!-- <a class="btn btn-primary " style="margin-right: 5px;" [routerLink]="['../edit-task', task.id]" -->
     <button class="btn btn-primary " style="margin-right: 5px;" routerLink="edit"
         routerLinkActive="active">Edit</button>
-    <button class="btn btn-danger " (click)="deleteTask(task.id)">Delete</button>
+    <button class="btn btn-danger " (click)="deleteTask(task.id)" style="margin-right: 5px;">Delete</button>
+    <button class="btn btn-success" (click)="assignTaskToUser()">Assign Task to User</button>
 </div>
 
 <router-outlet></router-outlet>

@@ -20,12 +20,12 @@
         <hr>
         <button class="btn btn-primary" (click)="createNewTask()" style="margin-bottom: 10px;">Create New Task</button>
         <app-task-item *ngFor="let task of filteredTasks,let i = index" [task]="task" [id]="task.id"
-            (onButtonClick)="handleButtonClick($event)">
+            (taskSelected)="onTaskSelected($event)">
         </app-task-item>
         <br>
-        <div *ngIf="clickedTaskId !== null">
+        <div *ngIf="selectedTaskId !== null">
             <p>The following is for demonstration purposes to showcase the use of @Output</p>
-            <p>You clicked on the task with ID: {{ clickedTaskId }}</p>
+            <p>You clicked on the task with ID: {{ selectedTaskId }}</p>
         </div>
     </div>
 

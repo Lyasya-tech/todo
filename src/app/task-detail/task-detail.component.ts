@@ -38,4 +38,9 @@ export class TaskDetailComponent {
       this.router.navigate(['/']);
     }
   }
+
+  assignTaskToUser(){
+    this.router.navigate(['/assignments'], { queryParams: { taskId: this.task.id } });
+  }
 }
+

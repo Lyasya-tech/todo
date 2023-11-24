@@ -25,6 +25,7 @@ const appRoutes: Routes = [
             ] },
         ]
     },
+    { path: '**', redirectTo: '/tasks' },
 ]
 
 @NgModule({

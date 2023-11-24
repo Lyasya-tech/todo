@@ -5,11 +5,25 @@
       <div class="form-group">
         <label for="description">Task Description</label>
         <input type="text" class="form-control" id="description" name="description" [(ngModel)]="task.description"
-          required />
+          required minlength="3" />
+      </div>
+      <div *ngIf="editTaskForm?.controls?.['description']?.hasError('required')
+        && editTaskForm?.controls?.['description']?.touched" class="alert alert-danger" style="padding: 10px;">
+        Description is required.
+      </div>
+      <div *ngIf="editTaskForm?.controls?.['description']?.errors?.['minlength']" class="alert alert-danger"
+        style="padding: 10px;">
+        Minimal allowed description length is
+        {{ editTaskForm?.controls?.['description']?.errors?.['minlength']?.requiredLength }} characters.
       </div>
       <div class="form-group">
         <label for="dueDate">Due Date</label>
         <input type="date" class="form-control" id="dueDate" name="dueDate" [(ngModel)]="task.dueDate" required />
+      </div>
+      <div
+        *ngIf="editTaskForm?.controls?.['dueDate']?.hasError('required') && editTaskForm?.controls?.['dueDate']?.touched"
+        class="alert alert-danger" style="padding: 10px;">
+        Due date is required.
       </div>
       <div class="form-group">
         <label for="status">Status</label>
@@ -19,8 +33,16 @@
           <option value="complete">Complete</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary"
+      <div
+        *ngIf="editTaskForm?.controls?.['status']?.hasError('required') && editTaskForm?.controls?.['status']?.touched"
+        class="alert alert-danger" style="padding: 10px;">
+        Status is required.
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!editTaskForm.valid"
         [innerText]="editMode === 'new' ? 'Create Task' : 'Update Task'"></button>
+      <div *ngIf="!editTaskForm.valid && editMode ==='new'" class="alert alert-info">
+        Please fill in the form to create a new task.
+      </div>
       <!--             <button *ngIf="editMode === 'new'" type="submit" class="btn btn-primary">Create Task</button>
             <button *ngIf="editMode !== 'new'" type="submit" class="btn btn-primary">Update Task</button> -->
     </form>

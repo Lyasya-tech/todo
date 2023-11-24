@@ -43,4 +43,12 @@
   button:hover {
     background-color: #0056b3;
   }
+
+  input.ng-touched.ng-invalid{
+    border-left: darkred 5px solid;
+  }
+
+  select.ng-touched.ng-invalid{
+    border-left: darkred 5px solid; 
+  }
   

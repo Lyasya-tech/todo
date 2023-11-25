@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-// import { TaskService } from './task.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { User } from '../models/user.model';
@@ -14,6 +13,8 @@ import { UserService } from './user.service';
 export class UsersComponent implements OnInit {
   users: User[] = [];
    subscription: Subscription;
+   searchQuery: string = '';
+   filteredUsers: User[] = [];
 
   constructor(private userService: UserService,
     private router: Router,
@@ -24,8 +25,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit triggered')
-    this.userService.getUserListUpdates().subscribe(updatedUsers => {
-      this.users = updatedUsers;
+    this.subscription = this.userService.getUserListUpdates().subscribe(updatedUsers => {
+      this.filteredUsers = updatedUsers;
     });
 
   }
@@ -34,5 +35,10 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['new-user'], {relativeTo: this.route});
   }
 
+  searchUsers() {
+    this.userService.searchUsers(this.searchQuery).subscribe(filteredUsers => {
+      this.filteredUsers = filteredUsers;
+    });
+  }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { User } from '../models/user.model';
 
 
@@ -64,7 +64,15 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
-  
+  searchUsers(query: string): Observable<User[]> {
+    return this.getUsers().pipe(
+      map(users => {
+        return users.filter(user =>
+          user.name.toLowerCase().includes(query.toLowerCase())
+        );
+      })
+    );
+  }
 };
 
 

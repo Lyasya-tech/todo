@@ -41,7 +41,7 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit() {
     console.log('ngOnInit triggered');
     this.assignmentsService.getAssignmentListUpdates().subscribe(updatedAssignments => { 
-      this.assignments = updatedAssignments; 
+      this.filteredAssignments = updatedAssignments; 
     });
     this.userService.getUsers().subscribe(users => {
       this.users = users;
@@ -58,6 +58,7 @@ export class AssignmentsComponent implements OnInit {
   searchAssignmentsWithDate() {
     this.assignmentsService.searchAssignments(this.filteredDate).subscribe((filteredAssignments) => {
       console.log(filteredAssignments);
+      this.filteredAssignments = filteredAssignments;
     });
   }
 
@@ -70,10 +71,6 @@ export class AssignmentsComponent implements OnInit {
     const task = this.tasks.find(task => task.id == taskId);
     return task ? task.description : 'Unknown Task';
   }
-
-  /* performSearch(){
-    this.assignmentsService.searchAssignments(this.filteredAssignments)
-  } */
 
 }
 

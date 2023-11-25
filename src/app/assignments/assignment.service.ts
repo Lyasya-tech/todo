@@ -71,7 +71,7 @@ export class AssignmentService {
 
   
 
-   // Filter assignments based on the query and date
+   // Filter assignments based on the query 
 searchAssignments(query: string): Observable<Assignment[]> {
   return this.getAssignments().pipe(
     map((assignments: Assignment[]) => {
@@ -79,15 +79,6 @@ searchAssignments(query: string): Observable<Assignment[]> {
         return assignments.filter((assignment) =>
           assignment.timestamp.toLowerCase().includes(query.toLowerCase())
         );
-
-        // Filter by date
-        /* if (date) {
-          filteredAssignments = filteredAssignments.filter(
-            (assignment) => assignment.timestamp === date
-          );
-        } */
-
-        
       })
     );
   }

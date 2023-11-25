@@ -18,6 +18,8 @@ import { UserItemComponent } from './users/user-item/user-item.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserService } from './users/user.service';
 import { AssignmentsComponent } from './assignments/assignments.component';
+import { AssignmentItemComponent } from './assignments/assignment-item/assignment-item.component';
+import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { AssignmentsComponent } from './assignments/assignments.component';
     UserItemComponent,
     UserEditComponent,
     AssignmentsComponent,
+    AssignmentItemComponent,
+    AssignmentDetailComponent,
   ],
   imports: [
     BrowserModule,

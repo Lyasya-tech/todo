@@ -1,25 +1,11 @@
-<table>
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Task</th>
-            <th>Time of assignment</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor= "let assignment of assignments">
-
-            <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
-            <td id="taskCell">{{ getTaskDescription(assignment.taskId) }}</td>
-            <td id="otherCell">{{assignment.timestamp | date : "dd.MM.yyyy HH:mm"}}</td> 
-            <td> <button class="btn btn-primary" (click)="editAssignemnt()">edit</button></td>
-            <td> <button class="btn btn-danger" (click)="deleteAssignemnt()">delete</button></td>
-        </tr>
-    </tbody>
-</table>
-
+<div class="row">
+    <div class="col-md-2">
+        <div> 
+            <input style="width: 200px;" type="date" class="form-control" [(ngModel)]="filteredDate" />
+        </div>
+        <button (click)="searchAssignmentsWithDate()">Search by date</button>
+    </div>
+</div>
 <hr>
     <p>
         Here you can assign user to task.
@@ -45,14 +31,24 @@
 
 <button class="btn btn-primary" (click)="createNewAssignment()"> Assign </button>
 
-<!-- Beispiel: Anzeige der gefilterten Aufgaben in einer Liste -->
-<ul>
-    <li *ngFor="let assignment of filteredAssignments">
-      {{ assignment.timestamp }}
-    </li>
-</ul>  
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Task</th>
+            <th>Time of assignment</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<tr *ngFor= "let assignment of filteredAssignments"> -->
+        <app-assignment-item *ngFor= "let assignment of filteredAssignments"[assignment]="assignment">
 
-<div> <input type="date" class="form-control" [(ngModel)]="filteredDate" />
-</div>
+           
+        </app-assignment-item>
+        <!-- </tr> -->
+    </tbody>
 
-<button (click)="searchAssignmentsWithDate()">Search by date</button>
+</table>
+

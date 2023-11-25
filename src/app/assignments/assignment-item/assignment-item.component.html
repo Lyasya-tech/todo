@@ -1,0 +1,8 @@
+<tr>
+    <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
+    <td id="taskCell">{{ getTaskDescription(assignment.taskId) }}</td>
+    <td id="otherCell">{{assignment.timestamp | date : "dd.MM.yyyy HH:mm"}}</td> 
+    <td> <button class="btn btn-primary" (click)="editAssignment()">edit</button></td>
+    <td> <button class="btn btn-danger" (click)="deleteAssignment()">delete</button></td>
+
+</tr>

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { Assignment } from '../models/assignment.model'; 
+
+
 
 
 @Injectable({
@@ -66,4 +68,28 @@ export class AssignmentService {
     console.log(url);
     return this.http.get<Assignment>(url); 
   }
+
+  
+
+   // Filter assignments based on the query and date
+searchAssignments(query: string): Observable<Assignment[]> {
+  return this.getAssignments().pipe(
+    map((assignments: Assignment[]) => {
+        // Filter by description
+        return assignments.filter((assignment) =>
+          assignment.timestamp.toLowerCase().includes(query.toLowerCase())
+        );
+
+        // Filter by date
+        /* if (date) {
+          filteredAssignments = filteredAssignments.filter(
+            (assignment) => assignment.timestamp === date
+          );
+        } */
+
+        
+      })
+    );
+  }
+
 }

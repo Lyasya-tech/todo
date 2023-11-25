@@ -6,6 +6,7 @@ import { AssignmentService } from './assignment.service';
 import { User } from '../models/user.model';
 import { Task } from '../models/task.model';
 import { UserService } from '../users/user.service';
+import { TaskService } from '../task-list/task.service';
 
 @Component({
     selector: 'app-assignments', 
@@ -14,6 +15,7 @@ import { UserService } from '../users/user.service';
 })
 export class AssignmentsComponent implements OnInit {
   assignments: Assignment[] = []; 
+  filteredAssignments: Assignment[] = [];
   subscription: Subscription;
 
   assignment: Assignment={id:0,  
@@ -21,14 +23,16 @@ export class AssignmentsComponent implements OnInit {
                           taskId: 0 ,
                           timestamp: new Date().toISOString()}; 
   users: User[] = [];
-  task: Task;
+  tasks: Task[] = [];
+  filteredDate: string = "";
 
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private assignmentsService: AssignmentService,
-    private userService: UserService
+    private userService: UserService,
+    private taskService: TaskService,
   ) 
   {
     console.log('constructor initiated');
@@ -42,15 +46,34 @@ export class AssignmentsComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
+    this.taskService.getTasks().subscribe(tasks => {
+      this.tasks = tasks;
+    }); 
   }
 
   createNewAssignment() {
     this.assignmentsService.createAssignment(this.assignment).subscribe(() => {}); 
+  }
+ 
+  searchAssignmentsWithDate() {
+    this.assignmentsService.searchAssignments(this.filteredDate).subscribe((filteredAssignments) => {
+      console.log(filteredAssignments);
+    });
   }
 
   getUserName(userId: number){
     const user = this.users.find(user => user.id == userId);
     return user ? user.name : 'Unknown User';
   }
+
+  getTaskDescription(taskId: number){
+    const task = this.tasks.find(task => task.id == taskId);
+    return task ? task.description : 'Unknown Task';
+  }
+
+  /* performSearch(){
+    this.assignmentsService.searchAssignments(this.filteredAssignments)
+  } */
+
 }
 

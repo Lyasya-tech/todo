@@ -12,7 +12,7 @@
         <tr *ngFor= "let assignment of assignments">
 
             <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
-            <td id="taskCell">{{ assignment.taskId }}</td>
+            <td id="taskCell">{{ getTaskDescription(assignment.taskId) }}</td>
             <td id="otherCell">{{assignment.timestamp | date : "dd.MM.yyyy HH:mm"}}</td> 
             <td> <button class="btn btn-primary" (click)="editAssignemnt()">edit</button></td>
             <td> <button class="btn btn-danger" (click)="deleteAssignemnt()">delete</button></td>
@@ -38,11 +38,21 @@
     <div class="dropdown">
         <label for="taskDropdown">Task:</label>
         <select id="taskDropdown" [(ngModel)]="assignment.taskId">
-            <option value="1">Task 1</option>
-            <option value="2">Task 2</option>
-            <option value="3">Task 3</option>
+            <option *ngFor="let task of tasks" [value]="task.id">{{ task.description }}</option>
         </select>
     </div>
 </div>
 
 <button class="btn btn-primary" (click)="createNewAssignment()"> Assign </button>
+
+<!-- Beispiel: Anzeige der gefilterten Aufgaben in einer Liste -->
+<ul>
+    <li *ngFor="let assignment of filteredAssignments">
+      {{ assignment.timestamp }}
+    </li>
+</ul>  
+
+<div> <input type="date" class="form-control" [(ngModel)]="filteredDate" />
+</div>
+
+<button (click)="searchAssignmentsWithDate()">Search by date</button>

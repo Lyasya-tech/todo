@@ -31,24 +31,34 @@
 
 <button class="btn btn-primary" (click)="createNewAssignment()"> Assign </button>
 
-<table>
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Task</th>
-            <th>Time of assignment</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <!--<tr *ngFor= "let assignment of filteredAssignments"> -->
-        <app-assignment-item *ngFor= "let assignment of filteredAssignments"[assignment]="assignment">
+    <div class="row">
+        <div class="col-md-5">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Task</th>
+                        <th>Time of assignment</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr assignment-item
+                        *ngFor="let  assignment of assignments"
+                        [assignment]="assignment">
+                        
+                      </tr>
+                       
+                </tbody>
+            
+            </table>
+        </div>
+        <div class="col-md-5">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 
-           
-        </app-assignment-item>
-        <!-- </tr> -->
-    </tbody>
 
-</table>
 

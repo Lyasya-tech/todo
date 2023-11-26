@@ -7,8 +7,9 @@ import { AssignmentService } from '../assignment.service';
 import { UserService } from 'src/app/users/user.service';
 import { TaskService } from 'src/app/task-list/task.service';
 
+
 @Component({
-  selector: 'app-assignment-item',
+  selector: 'tr[assignment-item]',
   templateUrl: './assignment-item.component.html',
   styleUrls: ['./assignment-item.component.css']
 })
@@ -37,6 +38,7 @@ export class AssignmentItemComponent implements OnInit{
       this.tasks = tasks;
     }); 
   }
+
   
   getUserName(userId: number){
     const user = this.users.find(user => user.id == userId);
@@ -54,5 +56,22 @@ export class AssignmentItemComponent implements OnInit{
   deleteAssignment(){
 
   }
+
+
+  navigateToDetails(assignmentId: number){
+    this.router.navigate([assignmentId], { relativeTo: this.route });
+  }
+
+  deleteTask(id: number) {
+    const confirmDelete = confirm('Are you sure you want to delete this assignment?');
+
+    if (confirmDelete) {
+      this.assignmentsService.deleteAssignment(id).subscribe(() => { })
+    }
+  }
+
+  /* emitSelectedTask() {
+    this.assignmentSelected.emit(this.assignment.id);
+  } */
 
 }

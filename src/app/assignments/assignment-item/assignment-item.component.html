@@ -1,8 +1,26 @@
-<tr>
-    <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
+
+    <!-- <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
     <td id="taskCell">{{ getTaskDescription(assignment.taskId) }}</td>
     <td id="otherCell">{{assignment.timestamp | date : "dd.MM.yyyy HH:mm"}}</td> 
     <td> <button class="btn btn-primary" (click)="editAssignment()">edit</button></td>
-    <td> <button class="btn btn-danger" (click)="deleteAssignment()">delete</button></td>
+    <td> <button class="btn btn-danger" (click)="deleteAssignment()">delete</button></td> -->
 
-</tr>
+<p>
+    Hallo 
+</p>
+
+<!-- <div class="list-group-item clearfix" (click)="navigateToDetails(assignment.id)" style="cursor: pointer">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ assignment.taskId }}</h4>
+        <p class="list-group-item-text">Due by: {{ assignment.userId }}</p>
+    </div>
+    <span class="pull-right">
+        <span class="pull-right" class="badge" style="margin-right: 5px;">
+            {{ assignment.timestamp }}
+        </span>
+         <button (click)="emitSelectedTask()">@Output demo</button> -->
+<!--         <a class="btn btn-primary btn-circle" style="margin-right: 5px;" [routerLink]="['../tasks/edit-task', id]"
+        routerLinkActive="active">Edit</a>
+        <button class="btn btn-danger btn-circle" (click)="deleteTask(id)">Delete</button> -->
+    <!-- </span>
+</div>  -->

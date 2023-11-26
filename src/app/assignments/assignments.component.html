@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-md-2">
-        <div> 
+        <div>
             <input style="width: 200px;" type="date" class="form-control" [(ngModel)]="filteredDate" />
         </div>
         <button (click)="searchAssignmentsWithDate()">Search by date</button>
     </div>
 </div>
 <hr>
-    <p>
-        Here you can assign user to task.
-    </p>
+<p>
+    Here you can assign user to task.
+</p>
 
 <div class="dropdown-container">
     <div class="dropdown">
@@ -31,34 +31,28 @@
 
 <button class="btn btn-primary" (click)="createNewAssignment()"> Assign </button>
 
-    <div class="row">
-        <div class="col-md-5">
-            <table>
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th>Task</th>
-                        <th>Time of assignment</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                        <tr assignment-item
-                        *ngFor="let  assignment of assignments"
-                        [assignment]="assignment">
-                        
-                      </tr>
-                       
-                </tbody>
-            
-            </table>
-        </div>
-        <div class="col-md-5">
-            <router-outlet></router-outlet>
-        </div>
+<div class="row">
+    <div class="col-md-5">
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Task</th>
+                    <th>Time of assignment</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr assignmentItem
+                    *ngFor="let assignment of filteredAssignments" [assignment]="assignment" (click)="navigateToDetails(assignment.id)"
+                    style="cursor: pointer;">
+                </tr>
+            </tbody>
+
+        </table>
     </div>
-
-
-
+    <div class="col-md-5">
+        <router-outlet></router-outlet>
+    </div>
+</div>

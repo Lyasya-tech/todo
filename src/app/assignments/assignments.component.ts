@@ -72,5 +72,8 @@ export class AssignmentsComponent implements OnInit {
     return task ? task.description : 'Unknown Task';
   }
 
+  navigateToDetails(assignmentId: number){
+      this.router.navigate([assignmentId], { relativeTo: this.route });
+  }
 }
 

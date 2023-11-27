@@ -7,9 +7,7 @@
         <span class="pull-right" class="badge" style="margin-right: 5px;">
             {{ user.role }}
         </span>
+        <button (click)="emitSelectedTask()">@Output demo</button>
         
-        <!-- <a class="btn btn-primary btn-circle" style="margin-right: 5px;" [routerLink]="['../users/edit-user', id]"
-        routerLinkActive="active">Edit</a>
-        <button class="btn btn-danger btn-circle" (click)="deleteUser(id)">Delete</button> -->
     </span>
 </div>

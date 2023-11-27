@@ -22,6 +22,7 @@ import { AssignmentItemComponent } from './assignments/assignment-item/assignmen
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

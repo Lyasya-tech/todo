@@ -1,0 +1,30 @@
+
+.assignment-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 15px;
+    width:350px;
+    text-align: center;
+}
+
+.assignment-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.assignment-title {
+    margin: 0;
+    color: #333;
+    display: inline-block;
+}
+
+.assignment-body {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.assignment-body p {
+    margin: 5px 0;
+}

@@ -1,1 +1,11 @@
-<p>assignment-detail works!</p>
+<article class="assignment-card">
+    <header class="assignment-header">
+        <h2 class="assignment-title">Assignment Id: {{ assignment.id }}</h2>
+    </header>
+
+    <section class="assignment-body">
+        <p>User Id: {{ assignment.userId }}</p>
+        <p>Task Id: {{ assignment.taskId }}</p>
+        <p>Times of assignment: {{ assignment.timestamp | date : "dd.MM.yyyy HH:mm" }}</p>
+    </section>
+</article>

@@ -1,4 +1,4 @@
-<div class="user-details-container">
+<div class="user-details-container" style="margin-left: 100px;">
     <h2>User Details</h2>
     <div class="details-item">
         <strong>ID:</strong> {{ user.id }}
@@ -19,5 +19,6 @@
     <button class="btn btn-danger " (click)="deleteUser(user.id)" style="margin-right: 5px;">Delete</button>
     <button class="btn btn-success" (click)="assignUserToTask()">Assign User to Task</button>
 </div>
+<br><br><br><br><br>
 
 <router-outlet></router-outlet>

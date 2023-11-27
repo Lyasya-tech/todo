@@ -20,6 +20,7 @@ import { UserService } from './users/user.service';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentItemComponent } from './assignments/assignment-item/assignment-item.component';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AssignmentEditComponent } from './assignments/assignment-edit/assignment-edit.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AssignmentEditComponent } from './assignments/assignment-edit/assignmen
     AssignmentsComponent,
     AssignmentItemComponent,
     AssignmentDetailComponent,
+    UserDetailComponent,
     AssignmentEditComponent,
   ],
   imports: [

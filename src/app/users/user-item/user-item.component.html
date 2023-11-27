@@ -1,4 +1,4 @@
-<div class="list-group-item clearfix" [ngClass]="getRoleClass(user)">
+<div class="list-group-item clearfix" [ngClass]="getRoleClass(user)" (click)="navigateToDetails(user.id)" style="cursor: pointer">
     <div class="pull-left">
         <h4 class="list-group-item-heading">{{ user.name }}</h4>
         <p class="list-group-item-text">Responsible contact details: {{ user.email }}</p>
@@ -7,8 +7,9 @@
         <span class="pull-right" class="badge" style="margin-right: 5px;">
             {{ user.role }}
         </span>
-        <a class="btn btn-primary btn-circle" style="margin-right: 5px;" [routerLink]="['../users/edit-user', id]"
+        
+        <!-- <a class="btn btn-primary btn-circle" style="margin-right: 5px;" [routerLink]="['../users/edit-user', id]"
         routerLinkActive="active">Edit</a>
-        <button class="btn btn-danger btn-circle" (click)="deleteUser(id)">Delete</button>
+        <button class="btn btn-danger btn-circle" (click)="deleteUser(id)">Delete</button> -->
     </span>
 </div>

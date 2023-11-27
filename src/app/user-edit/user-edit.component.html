@@ -2,7 +2,7 @@
     <div class="col-xs-12">
         <h2>{{ editMode ? 'Create New User' : 'Edit User'  }}</h2>
         <form (ngSubmit)="onFormSubmit()" #editUserForm="ngForm">
-          <div class="name">
+          <div class="form-group">
             <label for="name">User Name</label>
             <input
               type="text"
@@ -10,9 +10,18 @@
               id="name"
               name="name"
               [(ngModel)]="user.name"
-              required
+              required minlength="3"
             />
           </div>
+          <div *ngIf="editUserForm?.controls?.['name']?.hasError('required') && editUserForm?.controls?.['name']?.touched" class="alert alert-danger" style="padding: 10px;">Name is required.
+        </div>
+
+        <div *ngIf="editUserForm?.controls?.['name']?.errors?.['minlength']" class="alert alert-danger"
+        style="padding: 10px;">
+        Minimal allowed Name length is
+        {{ editUserForm?.controls?.['name']?.errors?.['minlength']?.requiredLength }} characters.
+      </div>
+
           <div class="form-group">
             <label for="role">Role</label>
             <input
@@ -24,6 +33,11 @@
               required
             />
           </div>
+          <div
+        *ngIf="editUserForm?.controls?.['role']?.hasError('required') && editUserForm?.controls?.['role']?.touched"
+        class="alert alert-danger" style="padding: 10px;">
+        Role is required.
+      </div>
           <div class="form-group">
             <label for="email">eMail</label>
             <input
@@ -35,8 +49,21 @@
               required
             />
           </div>
-            <button *ngIf="editMode === 'new'" type="submit" class="btn btn-primary">Create User</button>
-            <button *ngIf="editMode !== 'new'" type="submit" class="btn btn-primary">Update User</button>
+
+          <div
+        *ngIf="editUserForm?.controls?.['email']?.hasError('required') && editUserForm?.controls?.['email']?.touched"
+        class="alert alert-danger" style="padding: 10px;">
+        eMail is required.
+      </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!editUserForm.valid" 
+                [innerText]="editMode === 'new' ? 'Create User' : 'Update User'"></button>
+
+            <div *ngIf="!editUserForm.valid && editMode ==='new'" class="alert alert-info">
+                Please fill in the form to create a new user.
+            </div>
+
+            <!-- <button *ngIf="editMode !== 'new'" type="submit" class="btn btn-primary">Update User</button> -->
         </form>
 
 

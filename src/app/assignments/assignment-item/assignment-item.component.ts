@@ -9,13 +9,13 @@ import { TaskService } from 'src/app/task-list/task.service';
 
 
 @Component({
-  selector: 'tr[assignment-item]',
+  selector: 'tr[assignmentItem]',
   templateUrl: './assignment-item.component.html',
   styleUrls: ['./assignment-item.component.css']
 })
  
 export class AssignmentItemComponent implements OnInit{
-  @Input() assignment:Assignment;
+  @Input() assignment: Assignment;
   users: User[] = [];
   tasks: Task[] = [];
 

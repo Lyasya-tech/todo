@@ -25,8 +25,9 @@ export class UserEditComponent {
 
     ngOnInit() {
         if (this.editMode !== 'new'){
-          this.route.paramMap.subscribe((params: ParamMap) => {
-            const userId = +params.get('id'); // Get the user ID from the route parameter
+          this.route.parent.params.subscribe(params => {
+            const userId = +params['id']; // Get the user ID from the route parameter
+            console.log(userId);
             this.userService.getUserById(userId).subscribe((user: User) => {
               this.user = user;  // Fetch user by ID
             });

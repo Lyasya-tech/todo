@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from '../user.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-item',
@@ -12,7 +13,9 @@ export class UserItemComponent {
     @Input() id: number;
 
     constructor(
-        private userService: UserService
+        private userService: UserService,
+        private router: Router,
+        private route: ActivatedRoute,
     ) { }
 
     getRoleClass(user: User) {
@@ -29,6 +32,10 @@ export class UserItemComponent {
     if (confirmDelete) {
       this.userService.deleteUser(id).subscribe(() => { })
     }
+  }
+
+  navigateToDetails(userId: number) {
+    this.router.navigate([userId], {relativeTo: this.route });
   }
 
 }

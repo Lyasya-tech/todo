@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
    subscription: Subscription;
    searchQuery: string = '';
    filteredUsers: User[] = [];
+   selectedUserId: number = null;
 
   constructor(private userService: UserService,
     private router: Router,
@@ -41,4 +42,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  onUserSelected(userId: number) {
+    this.selectedUserId = userId;
+  }
 }

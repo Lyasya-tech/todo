@@ -8,13 +8,16 @@ import { UserEditComponent } from "./user-edit/user-edit.component";
 import { AssignmentsComponent } from "./assignments/assignments.component";
 import { TaskDetailComponent } from "./task-detail/task-detail.component";
 import { AssignmentDetailComponent } from "./assignments/assignment-detail/assignment-detail.component";
+import { UserDetailComponent } from "./user-detail/user-detail.component";
 
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/tasks', pathMatch: 'full' },
     { path: 'users', component: UsersComponent, children: [
         { path: 'new-user', component: UserEditComponent, data: { editMode: 'new' } },
-        { path: 'edit-user/:id', component: UserEditComponent }
+       // { path: 'edit-user/:id', component: UserEditComponent }
+       { path: ':id', component: UserDetailComponent, children: [
+        {path: 'edit', component: UserEditComponent} ] },
         ]
     },
     { path: 'assignments', component: AssignmentsComponent, children: [

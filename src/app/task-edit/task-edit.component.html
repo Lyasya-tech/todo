@@ -11,6 +11,7 @@
         && editTaskForm?.controls?.['description']?.touched" class="alert alert-danger" style="padding: 10px;">
         Description is required.
       </div>
+
       <div *ngIf="editTaskForm?.controls?.['description']?.errors?.['minlength']" class="alert alert-danger"
         style="padding: 10px;">
         Minimal allowed description length is

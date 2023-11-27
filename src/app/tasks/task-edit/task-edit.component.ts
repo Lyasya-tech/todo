@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { Task } from '../models/task.model';
+import { Task } from '../../models/task.model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { TaskService } from '../task-list/task.service';
+import { TaskService } from '../../services/task.service';
 import { NgForm } from '@angular/forms';
 
 @Component({

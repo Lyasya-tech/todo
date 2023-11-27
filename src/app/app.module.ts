@@ -5,15 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { TaskEditComponent } from './task-edit/task-edit.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { UsersComponent } from './users/users.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { TaskService } from './task-list/task.service';
+import { TaskService } from './services/task.service';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { TaskItemComponent } from './task-list/task-item/task-item.component';
-import { taskResolver } from './task-list/task.resolver';
+import { TaskItemComponent } from './tasks/task-item/task-item.component';
+import { taskResolver } from './tasks/task.resolver';
 import { UserItemComponent } from './users/user-item/user-item.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserService } from './users/user.service';
@@ -27,7 +27,7 @@ import { AssignmentEditComponent } from './assignments/assignment-edit/assignmen
 @NgModule({
   declarations: [
     AppComponent,
-    TaskListComponent,
+    TasksComponent,
     TaskEditComponent,
     TaskDetailComponent,
     UsersComponent,

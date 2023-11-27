@@ -1,6 +1,6 @@
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
 import { inject } from "@angular/core";
-import { TaskService } from "./task.service";
+import { TaskService } from "../services/task.service";
 import { catchError, map, of, tap } from "rxjs";
 
 export const taskResolver: ResolveFn<any> =

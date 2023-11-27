@@ -6,7 +6,7 @@ import { AssignmentService } from './assignment.service';
 import { User } from '../models/user.model';
 import { Task } from '../models/task.model';
 import { UserService } from '../users/user.service';
-import { TaskService } from '../task-list/task.service';
+import { TaskService } from '../services/task.service';
 
 @Component({
     selector: 'app-assignments', 

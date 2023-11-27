@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TaskService } from './task.service';
+import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { jsPDF } from 'jspdf';
-import { TaskPdfService } from './task-pdf.service';
+import { TaskPdfService } from '../services/task-pdf.service';
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  selector: 'app-tasks',
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css']
 })
-export class TaskListComponent implements OnInit, OnDestroy {
+export class TasksComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
   subscription: Subscription;
   searchQuery: string = '';

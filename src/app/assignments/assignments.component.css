@@ -1,4 +1,4 @@
-table {
+/* table {
     border-collapse: collapse;
     width: 100%;
 }
@@ -19,4 +19,53 @@ th {
 
 .dropdown {
     margin-right: 10px;
+} */
+
+.container {
+    margin-top: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    width: 200px;
+    margin-right: 10px;
+}
+
+.assignment-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    margin-right: 10px;
+}
+
+.assignment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.btn-primary,
+.btn-secondary {
+    margin-top: 10px;
+}
+
+.col-md-2 h2 {
+    text-align: right; 
+    margin-right: 20px; 
 }

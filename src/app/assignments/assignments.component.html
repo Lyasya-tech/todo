@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-2">
+        <h2>Assignments</h2>
         <div>
-            <input style="width: 200px;" type="date" class="form-control" [(ngModel)]="filteredDate" />
+            <input type="date" class="form-control" [(ngModel)]="filteredDate" />
         </div>
         <button (click)="searchAssignmentsWithDate()">Search by date</button>
     </div>
@@ -33,7 +34,7 @@
 
 <div class="row">
     <div class="col-md-5">
-        <table>
+        <table class="assignment-table">
             <thead>
                 <tr>
                     <th>User</th>

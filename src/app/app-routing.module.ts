@@ -1,12 +1,12 @@
 import { NgModule, inject } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TaskListComponent } from "./task-list/task-list.component";
-import { TaskEditComponent } from "./task-edit/task-edit.component";
+import { TaskEditComponent } from "./task-list/task-edit/task-edit.component";
 import { UsersComponent } from "./users/users.component";
 import { taskResolver } from "./task-list/task.resolver";
 import { UserEditComponent } from "./user-edit/user-edit.component";
 import { AssignmentsComponent } from "./assignments/assignments.component";
-import { TaskDetailComponent } from "./task-detail/task-detail.component";
+import { TaskDetailComponent } from "./task-list/task-detail/task-detail.component";
 import { AssignmentDetailComponent } from "./assignments/assignment-detail/assignment-detail.component";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
 import { AssignmentEditComponent } from "./assignments/assignment-edit/assignment-edit.component";

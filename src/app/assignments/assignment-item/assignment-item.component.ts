@@ -5,7 +5,7 @@ import { Task } from 'src/app/models/task.model';
 import { User } from 'src/app/models/user.model';
 import { AssignmentService } from '../assignment.service';
 import { UserService } from 'src/app/users/user.service';
-import { TaskService } from 'src/app/task-list/task.service';
+import { TaskService } from 'src/app/services/task.service';
 
 
 @Component({

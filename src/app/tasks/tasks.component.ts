@@ -7,11 +7,11 @@ import { jsPDF } from 'jspdf';
 import { TaskPdfService } from '../services/task-pdf.service';
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  selector: 'app-tasks',
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css']
 })
-export class TaskListComponent implements OnInit, OnDestroy {
+export class TasksComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
   subscription: Subscription;
   searchQuery: string = '';

@@ -8,15 +8,14 @@
                     <!-- <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
                 </div> -->
-                    <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search tasks">
+                    <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search tasks"
+                        (keyup.enter)="searchTasks()">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!--         <input type="text" [(ngModel)]="searchQuery" placeholder="Search tasks">
-        <button style="margin-left: 10px;" class="btn btn-primary" (click)="searchTasks()">Search</button> -->
         <hr>
 
         <div class="row">
@@ -28,7 +27,7 @@
             </div>
         </div>
         <hr>
-        
+
         <app-task-item *ngFor="let task of filteredTasks,let i = index" [task]="task" [id]="task.id"
             (taskSelected)="onTaskSelected($event)">
         </app-task-item>

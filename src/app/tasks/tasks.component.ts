@@ -3,7 +3,6 @@ import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
-import { jsPDF } from 'jspdf';
 import { TaskPdfService } from '../services/task-pdf.service';
 
 @Component({
@@ -26,7 +25,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   ) {
 
     console.log('constructor initiated');
-
+    // RESOLVER NOT NEEDED JUST FOR FUTURE REFERENCE
     /*       this.route.data.subscribe(data => {
             console.log('Resolved Data:', data.resolvedTasks.resolvedTasks);
             console.log(typeof data.resolvedTasks)
@@ -39,14 +38,14 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('ngOnInit triggered')
-    this.subscription = this.taskService.getTaskListUpdates().subscribe(updatedTasks => {
-      // this.tasks = updatedTasks;
-      this.filteredTasks = updatedTasks;
+    this.subscription = this.taskService.getTaskListUpdates().subscribe({
+      next: updatedTasks => {
+        // this.tasks = updatedTasks;
+        this.filteredTasks = updatedTasks;
+      }, error: (errMessage) => {
+        console.error('error loading tasks', errMessage);
+      }
     });
-
-    /*     this.taskService.getTasks().subscribe((data: Task[]) => {
-          this.tasks = data;
-        }); */
   }
 
   createNewTask() {
@@ -54,8 +53,12 @@ export class TasksComponent implements OnInit, OnDestroy {
   }
 
   searchTasks() {
-    this.taskService.searchTasks(this.searchQuery).subscribe(filteredTasks => {
-      this.filteredTasks = filteredTasks;
+    this.taskService.searchTasks(this.searchQuery).subscribe({
+      next: filteredTasks => {
+        this.filteredTasks = filteredTasks;
+      }, error: errMessage => {
+        console.error('search failed', errMessage);
+      }
     });
   }
 
@@ -69,15 +72,6 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   generatePDF() {
     this.pdfService.generatePdf(this.filteredTasks);
-/*     const pdf = new jsPDF();
-
-    pdf.text('Task Report', 10, 10);
-    this.filteredTasks.forEach((task, index) => {
-      const yPos = 20 + index * 10;
-      pdf.text(`${task.id}. ${task.description} - ${task.status}`, 10, yPos);
-    });
-
-    pdf.save('task_report.pdf'); */
   }
 
 }

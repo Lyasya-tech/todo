@@ -14,18 +14,30 @@
         </div>
     <hr>
 
-    <div class="col-md-5">
+    <div class="row">
         <h2>Users</h2>
+    <div class="col-md-5 d-flex justify-content-between">
         <button class="btn btn-primary" (click)="createNewUser()" style="margin-bottom: 10px;">Create New User</button>
+    </div>
+    <div class="col text-right" style="padding-right: 12px;">
+        <button class="btn btn-secondary" (click)="generatePDF()">Generate PDF Report</button>
+    </div>
         
-        <app-user-item *ngFor="let user of filteredUsers, let i = index" [user]="user" [id]="user.id"
+    </div>
+    <hr>
+
+    <app-user-item *ngFor="let user of filteredUsers, let i = index" [user]="user" [id]="user.id"
             (userSelected)="onUserSelected($event)">
         </app-user-item>
+        <br>
+
+        <div *ngIf="selectedUserId !== null">
+            <p>The following is for demonstration purposes to showcase the use of @Output</p>
+            <p>You clicked on the task with ID: {{ selectedUserId }}</p>
+        </div>
     </div>
 
         <div class="col-md-7">
-            <div class="edit-user-container">
                 <router-outlet></router-outlet>
             </div>
         </div>
-</div>

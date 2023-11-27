@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from '../user.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class UserItemComponent {
     @Input() user: User;
     @Input() id: number;
+    @Output() userSelected: EventEmitter<number> = new EventEmitter<number>();
 
     constructor(
         private userService: UserService,
@@ -36,6 +37,10 @@ export class UserItemComponent {
 
   navigateToDetails(userId: number) {
     this.router.navigate([userId], {relativeTo: this.route });
+  }
+
+  emitSelectedTask() {
+    this.userSelected.emit(this.user.id);
   }
 
 }

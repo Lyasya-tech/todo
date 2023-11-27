@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { User } from '../models/user.model';
 import { UserService } from './user.service';
+import { UserPdfService } from './user-pdf.service';
 
 
 @Component({
@@ -19,13 +20,13 @@ export class UsersComponent implements OnInit {
 
   constructor(private userService: UserService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private pdfService: UserPdfService
+    ) {
       
-      console.log('constructor initiated');
     }
 
   ngOnInit() {
-    console.log('ngOnInit triggered')
     this.subscription = this.userService.getUserListUpdates().subscribe(updatedUsers => {
       this.filteredUsers = updatedUsers;
     });
@@ -44,5 +45,9 @@ export class UsersComponent implements OnInit {
 
   onUserSelected(userId: number) {
     this.selectedUserId = userId;
+  };
+
+  generatePDF() {
+    this.pdfService.generatePdf(this.filteredUsers);
   }
 }

@@ -9,6 +9,7 @@ import { AssignmentsComponent } from "./assignments/assignments.component";
 import { TaskDetailComponent } from "./task-detail/task-detail.component";
 import { AssignmentDetailComponent } from "./assignments/assignment-detail/assignment-detail.component";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
+import { AssignmentEditComponent } from "./assignments/assignment-edit/assignment-edit.component";
 
 
 const appRoutes: Routes = [
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'assignments', component: AssignmentsComponent, children: [
-             {path: ':id', component: AssignmentDetailComponent,}   ] },
+             {path: ':id', component: AssignmentDetailComponent},
+              {path: ':id/edit', component: AssignmentEditComponent} ] },
     { path: 'tasks', component: TaskListComponent, children: [
             { path: 'new-task', component: TaskEditComponent, data: { editMode: 'new' } },
             // { path: 'edit-task/:id', component: TaskEditComponent },

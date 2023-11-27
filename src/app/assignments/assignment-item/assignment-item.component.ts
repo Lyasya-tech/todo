@@ -53,16 +53,13 @@ export class AssignmentItemComponent implements OnInit{
   editAssignment(){
 
   }
-  deleteAssignment(){
-
-  }
-
+ 
 
   navigateToDetails(assignmentId: number){
     this.router.navigate([assignmentId], { relativeTo: this.route });
   }
 
-  deleteTask(id: number) {
+  deleteAssignment(id: number) {
     const confirmDelete = confirm('Are you sure you want to delete this assignment?');
 
     if (confirmDelete) {

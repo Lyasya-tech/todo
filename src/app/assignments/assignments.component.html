@@ -41,11 +41,12 @@
                     <th>Time of assignment</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr assignmentItem
-                    *ngFor="let assignment of filteredAssignments" [assignment]="assignment" (click)="navigateToDetails(assignment.id)"
+                    *ngFor="let assignment of filteredAssignments" [assignment]="assignment"
                     style="cursor: pointer;">
                 </tr>
             </tbody>
@@ -56,3 +57,4 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+<!-- (click)="navigateToDetails(assignment.id) -->

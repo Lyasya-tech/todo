@@ -19,7 +19,8 @@ export class TaskEditComponent implements OnInit, OnDestroy{
   };
   editMode: string;
   // @ViewChild('editTaskForm', {static: false}) editTaskForm: NgForm;
-  subscription: Subscription;
+  private subscription: Subscription;
+  private routeSubscription: Subscription;
 
   constructor(private route: ActivatedRoute, private taskService: TaskService) {
     this.editMode = this.route.snapshot.data.editMode;
@@ -27,10 +28,11 @@ export class TaskEditComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     if (this.editMode !== 'new'){
-      this.route.parent.params.subscribe(params => {
+      this.routeSubscription = this.route.parent.params.subscribe(params => {
         const taskId = +params['id']; 
-        this.taskService.getTaskById(taskId).subscribe({
+        this.subscription = this.taskService.getTaskById(taskId).subscribe({
           next: (task: Task) => {
+            console.log('edit component getTaskById')
           this.task = task;  
         }, error: errMessage => {
           console.error('no task was fetched', errMessage);
@@ -54,6 +56,8 @@ export class TaskEditComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
+    console.log('edit component ng destroy triggered');
+    this.routeSubscription.unsubscribe();
     this.subscription.unsubscribe();
   }
 

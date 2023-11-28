@@ -16,7 +16,8 @@ export class TaskDetailComponent implements OnInit, OnDestroy{
     dueDate: '',
     status: ''
   };
-  subscription: Subscription;
+  private subscription: Subscription;
+  private routeSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +26,11 @@ export class TaskDetailComponent implements OnInit, OnDestroy{
     ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.routeSubscription = this.route.paramMap.subscribe(params => {
       const taskId = +params.get('id');
       this.subscription = this.taskService.getTaskById(taskId).subscribe({
         next: task => {
+          console.log('details component fetch task by ID')
         this.task = task;
       }, error: errMessage => {
         console.error('no task was fetched', errMessage);
@@ -50,8 +52,13 @@ export class TaskDetailComponent implements OnInit, OnDestroy{
     this.router.navigate(['/assignments'], { queryParams: { taskId: this.task.id } });
   }
 
+  closeTaskDetails(){
+    this.router.navigate(['/tasks']);
+  }
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

@@ -43,16 +43,24 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr assignmentItem
                     *ngFor="let assignment of filteredAssignments" [assignment]="assignment"
-                    style="cursor: pointer;">
+                    (assignmentSelected)="onAssignmentSelected($event)" style="cursor: pointer;">
                 </tr>
             </tbody>
-
         </table>
+        <div *ngIf="selectedAssignmentId !== null">
+            <p>
+                The following is for demonstration purposes to showcase the use of @Output.
+            </p>
+            <p>
+                You clicked on the assignment with Id: {{selectedAssignmentId}}
+            </p>
+        </div>
     </div>
     <div class="col-md-5">
         <router-outlet></router-outlet>

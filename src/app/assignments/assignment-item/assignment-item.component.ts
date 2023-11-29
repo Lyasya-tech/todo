@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from 'src/app/models/assignment.model';
 import { Task } from 'src/app/models/task.model';
@@ -16,6 +16,7 @@ import { TaskService } from 'src/app/services/task.service';
  
 export class AssignmentItemComponent implements OnInit{
   @Input() assignment: Assignment;
+  @Output() assignmentSelected : EventEmitter<number>=new EventEmitter<number>();
   users: User[] = [];
   tasks: Task[] = [];
 
@@ -50,10 +51,6 @@ export class AssignmentItemComponent implements OnInit{
     return task ? task.description : 'Unknown Task';
   }
   
-  editAssignment(){
-
-  }
- 
 
   navigateToDetails(assignmentId: number){
     this.router.navigate([assignmentId], { relativeTo: this.route });
@@ -67,8 +64,8 @@ export class AssignmentItemComponent implements OnInit{
     }
   }
 
-  /* emitSelectedTask() {
+  emitSelectedAssignment() {
     this.assignmentSelected.emit(this.assignment.id);
-  } */
+  } 
 
 }

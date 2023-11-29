@@ -25,6 +25,7 @@ export class AssignmentsComponent implements OnInit {
   users: User[] = [];
   tasks: Task[] = [];
   filteredDate: string = "";
+  selectedAssignmentId: number= null;
 
 
   constructor(
@@ -84,6 +85,10 @@ export class AssignmentsComponent implements OnInit {
 
   navigateToDetails(assignmentId: number){
       this.router.navigate([assignmentId], { relativeTo: this.route });
+  }
+
+  onAssignmentSelected(assignmentId: number){
+    this.selectedAssignmentId=assignmentId;
   }
 }
 

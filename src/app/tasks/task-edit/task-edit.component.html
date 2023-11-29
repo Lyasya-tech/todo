@@ -41,6 +41,7 @@
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!editTaskForm.valid"
         [innerText]="editMode === 'new' ? 'Create Task' : 'Update Task'"></button>
+      <button type="button" class="btn btn-cancel" (click)="cancelForm()" style="margin-left: 10px;">Cancel</button>
       <div *ngIf="!editTaskForm.valid && editMode ==='new'" class="alert alert-info">
         Please fill in the form to create a new task.
       </div>

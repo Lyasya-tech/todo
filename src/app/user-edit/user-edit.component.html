@@ -1,62 +1,41 @@
 <div class="row">
     <div class="col-xs-5" style="margin-left: 100px;">
-        <h2>{{ editMode ? 'Create New User' : 'Edit User'  }}</h2>
+        <h2>{{ editMode ? 'Create New User' : 'Edit User' }}</h2>
         <form (ngSubmit)="onFormSubmit()" #editUserForm="ngForm">
-          <div class="form-group">
-            <label for="name">User Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              name="name"
-              [(ngModel)]="user.name"
-              required minlength="3"
-            />
-          </div>
-          <div *ngIf="editUserForm?.controls?.['name']?.hasError('required') && editUserForm?.controls?.['name']?.touched" class="alert alert-danger" style="padding: 10px;">Name is required.
-        </div>
+            <div class="form-group">
+                <label for="name">User Name</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" required
+                    minlength="3" />
+            </div>
+            <div *ngIf="editUserForm?.controls?.['name']?.hasError('required') && editUserForm?.controls?.['name']?.touched"
+                class="alert alert-danger" style="padding: 10px;">Name is required.
+            </div>
 
-        <div *ngIf="editUserForm?.controls?.['name']?.errors?.['minlength']" class="alert alert-danger"
-        style="padding: 10px;">
-        Minimal allowed Name length is
-        {{ editUserForm?.controls?.['name']?.errors?.['minlength']?.requiredLength }} characters.
-      </div>
+            <div *ngIf="editUserForm?.controls?.['name']?.errors?.['minlength']" class="alert alert-danger"
+                style="padding: 10px;">
+                Minimal allowed Name length is
+                {{ editUserForm?.controls?.['name']?.errors?.['minlength']?.requiredLength }} characters.
+            </div>
 
-          <div class="form-group">
-            <label for="role">Role</label>
-            <input
-              type="text"
-              class="form-control"
-              id="role"
-              name="role"
-              [(ngModel)]="user.role"
-              required
-            />
-          </div>
-          <div
-        *ngIf="editUserForm?.controls?.['role']?.hasError('required') && editUserForm?.controls?.['role']?.touched"
-        class="alert alert-danger" style="padding: 10px;">
-        Role is required.
-      </div>
-          <div class="form-group">
-            <label for="email">eMail</label>
-            <input
-              type="text"
-              class="form-control"
-              id="email"
-              name="email"
-              [(ngModel)]="user.email"
-              required
-            />
-          </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" class="form-control" id="role" name="role" [(ngModel)]="user.role" required />
+            </div>
+            <div *ngIf="editUserForm?.controls?.['role']?.hasError('required') && editUserForm?.controls?.['role']?.touched"
+                class="alert alert-danger" style="padding: 10px;">
+                Role is required.
+            </div>
+            <div class="form-group">
+                <label for="email">eMail</label>
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email" required />
+            </div>
 
-          <div
-        *ngIf="editUserForm?.controls?.['email']?.hasError('required') && editUserForm?.controls?.['email']?.touched"
-        class="alert alert-danger" style="padding: 10px;">
-        eMail is required.
-      </div>
+            <div *ngIf="editUserForm?.controls?.['email']?.hasError('required') && editUserForm?.controls?.['email']?.touched"
+                class="alert alert-danger" style="padding: 10px;">
+                eMail is required.
+            </div>
 
-            <button type="submit" class="btn btn-primary" [disabled]="!editUserForm.valid" 
+            <button type="submit" class="btn btn-primary" [disabled]="!editUserForm.valid"
                 [innerText]="editMode === 'new' ? 'Create User' : 'Update User'"></button>
 
             <div *ngIf="!editUserForm.valid && editMode ==='new'" class="alert alert-info">
@@ -68,6 +47,5 @@
 
 
     </div>
-    
-  </div>
-  
+
+</div>

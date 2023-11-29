@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Task } from '../../models/task.model';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './task-edit.component.html',
   styleUrls: ['./task-edit.component.css']
 })
-export class TaskEditComponent implements OnInit, OnDestroy{
+export class TaskEditComponent implements OnInit, OnDestroy {
   task: Task = {
     id: 0,
     description: '',
@@ -19,25 +19,31 @@ export class TaskEditComponent implements OnInit, OnDestroy{
   };
   editMode: string;
   // @ViewChild('editTaskForm', {static: false}) editTaskForm: NgForm;
-  subscription: Subscription;
+  private subscription: Subscription;
+  private routeSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private taskService: TaskService) {
+  constructor(
+    private route: ActivatedRoute,
+    private taskService: TaskService,
+    private router: Router
+  ) {
     this.editMode = this.route.snapshot.data.editMode;
   }
 
   ngOnInit() {
-    if (this.editMode !== 'new'){
-      this.route.parent.params.subscribe(params => {
-        const taskId = +params['id']; 
-        this.taskService.getTaskById(taskId).subscribe({
+    if (this.editMode !== 'new') {
+      this.routeSubscription = this.route.parent.params.subscribe(params => {
+        const taskId = +params['id'];
+        this.subscription = this.taskService.getTaskById(taskId).subscribe({
           next: (task: Task) => {
-          this.task = task;  
-        }, error: errMessage => {
-          console.error('no task was fetched', errMessage);
-        }
+            console.log('edit component getTaskById')
+            this.task = task;
+          }, error: errMessage => {
+            console.error('no task was fetched', errMessage);
+          }
+        });
       });
-      });
-    }  
+    }
   }
 
   onFormSubmit() {
@@ -48,16 +54,22 @@ export class TaskEditComponent implements OnInit, OnDestroy{
       this.taskService.updateTask(this.task).subscribe(updatedTask => {
       });
     }
-/*     this.taskService.updateTask(this.task).subscribe(updatedTask => {
-      this.task = updatedTask;
-    }); */
+    /*     this.taskService.updateTask(this.task).subscribe(updatedTask => {
+          this.task = updatedTask;
+        }); */
+  }
+
+  cancelForm() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    console.log('edit component ng destroy triggered');
+/*     this.routeSubscription.unsubscribe();
+    this.subscription.unsubscribe(); */
   }
 
 }
 
 // this.route.paramMap.subscribe((params: ParamMap) => {
-  // const taskId = +params.get('id'); // Get the task ID from the route parameter
+// const taskId = +params.get('id'); // Get the task ID from the route parameter

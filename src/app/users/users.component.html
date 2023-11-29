@@ -12,21 +12,22 @@
                 </div>
             </div>
         </div>
-    <hr>
+        <hr>
 
-    <div class="row">
-        <h2 style="margin-left: 15px;">Users</h2>
-    <div class="col-md-5 d-flex justify-content-between">
-        <button class="btn btn-primary" (click)="createNewUser()" style="margin-bottom: 10px;">Create New User</button>
-    </div>
-    <div class="col text-right" style="padding-right: 12px;">
-        <button class="btn btn-secondary" (click)="generatePDF()">Generate PDF Report</button>
-    </div>
-        
-    </div>
-    <hr>
+        <div class="row">
+            <h2 style="margin-left: 15px;">Users</h2>
+            <div class="col-md-5 d-flex justify-content-between">
+                <button class="btn btn-primary" (click)="createNewUser()" style="margin-bottom: 10px;">Create New
+                    User</button>
+            </div>
+            <div class="col text-right" style="padding-right: 12px;">
+                <button class="btn btn-secondary" (click)="generatePDF()">Generate PDF Report</button>
+            </div>
 
-    <app-user-item *ngFor="let user of filteredUsers, let i = index" [user]="user" [id]="user.id"
+        </div>
+        <hr>
+
+        <app-user-item *ngFor="let user of filteredUsers, let i = index" [user]="user" [id]="user.id"
             (userSelected)="onUserSelected($event)">
         </app-user-item>
         <br>
@@ -37,7 +38,7 @@
         </div>
     </div>
 
-        <div class="col-md-7">
-                <router-outlet></router-outlet>
-            </div>
-        </div>
+    <div class="col-md-7">
+        <router-outlet></router-outlet>
+    </div>
+</div>

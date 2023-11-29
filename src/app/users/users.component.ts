@@ -12,42 +12,42 @@ import { UserPdfService } from './user-pdf.service';
     styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users: User[] = [];
-   subscription: Subscription;
-   searchQuery: string = '';
-   filteredUsers: User[] = [];
-   selectedUserId: number = null;
+    users: User[] = [];
+    subscription: Subscription;
+    searchQuery: string = '';
+    filteredUsers: User[] = [];
+    selectedUserId: number = null;
 
-  constructor(private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private pdfService: UserPdfService
+    constructor(private userService: UserService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private pdfService: UserPdfService
     ) {
-      
+
     }
 
-  ngOnInit() {
-    this.subscription = this.userService.getUserListUpdates().subscribe(updatedUsers => {
-      this.filteredUsers = updatedUsers;
-    });
+    ngOnInit() {
+        this.subscription = this.userService.getUserListUpdates().subscribe(updatedUsers => {
+            this.filteredUsers = updatedUsers;
+        });
 
-  }
+    }
 
-  createNewUser() {
-    this.router.navigate(['new-user'], {relativeTo: this.route});
-  }
+    createNewUser() {
+        this.router.navigate(['new-user'], { relativeTo: this.route });
+    }
 
-  searchUsers() {
-    this.userService.searchUsers(this.searchQuery).subscribe(filteredUsers => {
-      this.filteredUsers = filteredUsers;
-    });
-  }
+    searchUsers() {
+        this.userService.searchUsers(this.searchQuery).subscribe(filteredUsers => {
+            this.filteredUsers = filteredUsers;
+        });
+    }
 
-  onUserSelected(userId: number) {
-    this.selectedUserId = userId;
-  };
+    onUserSelected(userId: number) {
+        this.selectedUserId = userId;
+    };
 
-  generatePDF() {
-    this.pdfService.generatePdf(this.filteredUsers);
-  }
+    generatePDF() {
+        this.pdfService.generatePdf(this.filteredUsers);
+    }
 }

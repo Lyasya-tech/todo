@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-xs-5" style="margin-left: 100px;">
         <h2>{{ editMode === 'new' ? 'Create New Assignment' : 'Edit Assignment' }}</h2>
         <form (ngSubmit)="onFormSubmit()" #editAssignmentForm="ngForm">
@@ -48,6 +48,49 @@
             <div *ngIf="editAssignmentForm?.controls?.['timestamp']?.hasError('required') && editAssignmentForm?.controls?.['timestamp']?.touched"
                 class="alert alert-danger" style="padding: 10px;">
                 Timestamp is required.
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!editAssignmentForm.valid"
+                [innerText]="editMode === 'new' ? 'Create Assignment' : 'Update Assignment'"></button>
+
+            <div *ngIf="!editAssignmentForm.valid && editMode === 'new'" class="alert alert-info">
+                Please fill in the form to create a new assignment.
+            </div>
+        </form>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="col-xs-5" style="margin-left: 100px;">
+        <h2>{{ 'Edit Assignment' }}</h2>
+        <form (ngSubmit)="onFormSubmit()" #editAssignmentForm="ngForm">
+           
+
+            <div class="form-group">
+                <label for="userDropdown">User:</label>
+                <div class="dropdown">
+                    <select id="userDropdown" class="form-control" [(ngModel)]="assignment.userId" required>
+                        <option *ngFor="let user of users" [value]="user.id"
+                        [attr.selected]="user.id === assignment.userId">{{ user.name }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editAssignmentForm?.controls?.['userId']?.hasError('required') && editAssignmentForm?.controls?.['userId']?.touched"
+                    class="alert alert-danger" style="padding: 10px;">
+                    User selection is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="taskDropdown">Task:</label>
+                <div class="dropdown">
+                    <select id="taskDropdown" class="form-control" [(ngModel)]="assignment.taskId" required>
+                        <option *ngFor="let task of tasks" [value]="task.id">{{ task.description }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editAssignmentForm?.controls?.['taskId']?.hasError('required') && editAssignmentForm?.controls?.['taskId']?.touched"
+                    class="alert alert-danger" style="padding: 10px;">
+                    Task selection is required.
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary" [disabled]="!editAssignmentForm.valid"

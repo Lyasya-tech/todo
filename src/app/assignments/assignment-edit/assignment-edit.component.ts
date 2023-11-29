@@ -1,53 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Assignment } from 'src/app/models/assignment.model';
 import { AssignmentService } from '../assignment.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/users/user.service';
+import { TaskService } from 'src/app/services/task.service';
+/* import { User } from '../models/user.model';
+import { Task } from '../models/task.model'; */
+
 
 @Component({
   selector: 'app-assignment-edit',
   templateUrl: './assignment-edit.component.html',
   styleUrls: ['./assignment-edit.component.css']
 })
-export class AssignmentEditComponent {
-    assignment: Assignment = {
+export class AssignmentEditComponent { /* implements OnInit */
+  assignment: Assignment = {
     id: 0,
     userId: 0,
     taskId: 0,
     timestamp: ''
-};
+    /* 
+      users: User[] = [];
+      tasks: Task[] = []; */
+  };
 
   editMode: string;
-  assignmentService: any;
-  constructor(private route: ActivatedRoute, private taskService: AssignmentService) {
+  users: any;
+  tasks: any;
+  /* assignmentService: any; */
+  constructor(
+    private route: ActivatedRoute,
+    private assignmentService: AssignmentService,
+    private userService: UserService,
+    private taskService: TaskService
+  ) {
     this.editMode = this.route.snapshot.data.editMode;
   }
   ngOnInit() {
-    if (this.editMode !== 'new'){
-      this.route.parent.params.subscribe(params => {
-        const assignmentId = +params['id']; 
-        this.assignmentService.getAssignmentById(assignmentId).subscribe({
-          next: (assignment: Assignment) => {
-          this.assignment = assignment;  
+    this.route.params.subscribe(params => {
+      const assignmentId = +params['id'];
+      console.log(assignmentId);
+      this.assignmentService.getAssignmentById(assignmentId).subscribe({
+        next: (assignment: Assignment) => {
+          this.assignment = assignment;
         }, error: errMessage => {
           console.error('no assignment was fetched', errMessage);
         }
       });
-      });
-    }  
+    });
+    console.log('this assignment id ', this.assignment.id);
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
+    });
+    this.taskService.getTasks().subscribe(tasks => {
+      this.tasks = tasks;
+    });
+
   }
 
   onFormSubmit() {
     if (this.editMode === 'new') {
-        // Create a new assignment
-        this.assignmentService.createAssignment(this.assignment).subscribe(newAssignment => {
-            // Handle the new assignment as needed (e.g., display success message)
-        });
+      this.assignmentService.createAssignment(this.assignment).subscribe(newAssignment => {
+      });
     } else {
-        // Update an existing assignment
-        this.assignmentService.updateAssignment(this.assignment).subscribe(updatedAssignment => {
-            // Handle the updated assignment as needed (e.g., display success message)
-        });
+      this.assignmentService.updateAssignment(this.assignment).subscribe(updatedAssignment => {
+      });
     }
-}
+  }
 
 }

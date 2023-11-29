@@ -1,65 +1,3 @@
-<!-- <div class="row">
-    <div class="col-xs-5" style="margin-left: 100px;">
-        <h2>{{ editMode === 'new' ? 'Create New Assignment' : 'Edit Assignment' }}</h2>
-        <form (ngSubmit)="onFormSubmit()" #editAssignmentForm="ngForm">
-            <div class="form-group">
-                <label for="userId">User ID</label>
-                <input
-                    type="number"
-                    class="form-control"
-                    id="userId"
-                    name="userId"
-                    [(ngModel)]="assignment.userId"
-                    required
-                />
-            </div>
-            <div *ngIf="editAssignmentForm?.controls?.['userId']?.hasError('required') && editAssignmentForm?.controls?.['userId']?.touched"
-                class="alert alert-danger" style="padding: 10px;">
-                User ID is required.
-            </div>
-
-            <div class="form-group">
-                <label for="taskId">Task ID</label>
-                <input
-                    type="number"
-                    class="form-control"
-                    id="taskId"
-                    name="taskId"
-                    [(ngModel)]="assignment.taskId"
-                    required
-                />
-            </div>
-            <div *ngIf="editAssignmentForm?.controls?.['taskId']?.hasError('required') && editAssignmentForm?.controls?.['taskId']?.touched"
-                class="alert alert-danger" style="padding: 10px;">
-                Task ID is required.
-            </div>
-
-            <div class="form-group">
-                <label for="timestamp">Timestamp</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="timestamp"
-                    name="timestamp"
-                    [(ngModel)]="assignment.timestamp"
-                    required
-                />
-            </div>
-            <div *ngIf="editAssignmentForm?.controls?.['timestamp']?.hasError('required') && editAssignmentForm?.controls?.['timestamp']?.touched"
-                class="alert alert-danger" style="padding: 10px;">
-                Timestamp is required.
-            </div>
-
-            <button type="submit" class="btn btn-primary" [disabled]="!editAssignmentForm.valid"
-                [innerText]="editMode === 'new' ? 'Create Assignment' : 'Update Assignment'"></button>
-
-            <div *ngIf="!editAssignmentForm.valid && editMode === 'new'" class="alert alert-info">
-                Please fill in the form to create a new assignment.
-            </div>
-        </form>
-    </div>
-</div> -->
-
 <div class="row">
     <div class="col-xs-5" style="margin-left: 100px;">
         <h2>{{ 'Edit Assignment' }}</h2>
@@ -69,7 +7,7 @@
             <div class="form-group">
                 <label for="userDropdown">User:</label>
                 <div class="dropdown">
-                    <select id="userDropdown" class="form-control" [(ngModel)]="assignment.userId" required>
+                    <select id="userDropdown" name="userId" class="form-control" [(ngModel)]="assignment.userId" required>
                         <option *ngFor="let user of users" [value]="user.id"
                         [attr.selected]="user.id === assignment.userId">{{ user.name }}</option>
                     </select>
@@ -83,7 +21,7 @@
             <div class="form-group">
                 <label for="taskDropdown">Task:</label>
                 <div class="dropdown">
-                    <select id="taskDropdown" class="form-control" [(ngModel)]="assignment.taskId" required>
+                    <select id="taskDropdown" name="taskId"class="form-control" [(ngModel)]="assignment.taskId" required>
                         <option *ngFor="let task of tasks" [value]="task.id">{{ task.description }}</option>
                     </select>
                 </div>
@@ -93,10 +31,9 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" [disabled]="!editAssignmentForm.valid"
-                [innerText]="editMode === 'new' ? 'Create Assignment' : 'Update Assignment'"></button>
+            <button type="submit" class="btn btn-primary" [disabled]="!editAssignmentForm.valid">Update assignment</button>
 
-            <div *ngIf="!editAssignmentForm.valid && editMode === 'new'" class="alert alert-info">
+            <div *ngIf="!editAssignmentForm.valid" class="alert alert-info">
                 Please fill in the form to create a new assignment.
             </div>
         </form>

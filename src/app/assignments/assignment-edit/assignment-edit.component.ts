@@ -4,8 +4,7 @@ import { AssignmentService } from '../assignment.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/users/user.service';
 import { TaskService } from 'src/app/services/task.service';
-/* import { User } from '../models/user.model';
-import { Task } from '../models/task.model'; */
+
 
 
 @Component({
@@ -13,28 +12,24 @@ import { Task } from '../models/task.model'; */
   templateUrl: './assignment-edit.component.html',
   styleUrls: ['./assignment-edit.component.css']
 })
-export class AssignmentEditComponent { /* implements OnInit */
+export class AssignmentEditComponent implements OnInit{ 
   assignment: Assignment = {
     id: 0,
     userId: 0,
     taskId: 0,
     timestamp: ''
-    /* 
-      users: User[] = [];
-      tasks: Task[] = []; */
+    
   };
-
-  editMode: string;
   users: any;
   tasks: any;
-  /* assignmentService: any; */
+ 
   constructor(
     private route: ActivatedRoute,
     private assignmentService: AssignmentService,
     private userService: UserService,
     private taskService: TaskService
   ) {
-    this.editMode = this.route.snapshot.data.editMode;
+    
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -48,7 +43,7 @@ export class AssignmentEditComponent { /* implements OnInit */
         }
       });
     });
-    console.log('this assignment id ', this.assignment.id);
+    console.log(this.assignment.id);
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
@@ -59,13 +54,7 @@ export class AssignmentEditComponent { /* implements OnInit */
   }
 
   onFormSubmit() {
-    if (this.editMode === 'new') {
-      this.assignmentService.createAssignment(this.assignment).subscribe(newAssignment => {
-      });
-    } else {
       this.assignmentService.updateAssignment(this.assignment).subscribe(updatedAssignment => {
       });
     }
-  }
-
 }

@@ -16,7 +16,7 @@
     <div class="dropdown">
         <label for="userDropdown">User:</label>
         <select id="userDropdown" [(ngModel)]="assignment.userId">
-            <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+            <option *ngFor="let user of users" [value]="user.id"[attr.selected]="user.id === assignment.userId ? true : null">{{ user.name }}</option>
             <!-- <option value="2">User 2</option> -->
             <!-- <option value="3">User 3</option> -->
         </select>
@@ -25,7 +25,7 @@
     <div class="dropdown">
         <label for="taskDropdown">Task:</label>
         <select id="taskDropdown" [(ngModel)]="assignment.taskId">
-            <option *ngFor="let task of tasks" [value]="task.id">{{ task.description }}</option>
+            <option *ngFor="let task of tasks" [value]="task.id"[attr.selected]="task.id === assignment.taskId ? true : null">{{ task.description }}</option>
         </select>
     </div>
 </div>

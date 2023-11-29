@@ -49,6 +49,16 @@ export class AssignmentsComponent implements OnInit {
     this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
     }); 
+    this.route.queryParams.subscribe(params => {
+      const taskId = params['taskId'];
+      if (taskId) {
+        this.assignment.taskId = taskId;
+      }
+      const userId = params['userId'];
+      if (userId) {
+        this.assignment.userId = userId;
+      }
+    });
   }
 
   createNewAssignment() {

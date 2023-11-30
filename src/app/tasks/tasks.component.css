@@ -1,8 +1,6 @@
 .edit-task-container {
   max-width: 500px;
-  /* Adjust to your preferred maximum width */
   margin: 0 auto;
-  /* Center the content horizontally */
 }
 
 button.btn.btn-primary {
@@ -21,12 +19,9 @@ button.btn.btn-primary:hover {
 .input-group {
   display: flex;
   align-items: center;
-  /* Align items vertically */
 }
 
 .input-group .form-control {
   flex-grow: 1;
-  /* Allow the input to grow and take remaining space */
   margin-right: 5px;
-  /* Adjust margin between input and button */
 }

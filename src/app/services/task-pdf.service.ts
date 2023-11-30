@@ -11,6 +11,8 @@ export class TaskPdfService {
     const imageURL = 'assets/images/logo.png'
     ;
 
+    // console.log(pdf.getFontList());
+
     // Set document properties
     pdf.setProperties({
       title: 'Task Report',
@@ -19,7 +21,7 @@ export class TaskPdfService {
     });
 
     // Set font
-    pdf.setFont('Arial', 'normal');
+    pdf.setFont('Courier', '');
 
     // Add content to the PDF
     pdf.text('Task Report', 20, 10);

@@ -1,3 +1,10 @@
+# About the authors
+
+First and foremost - special thanks to our super programmer Olga *Lyasya* Peshkova.
+Peshkova Olga: Entity Task
+Haumer Daniela: Entity User
+Hassan Nada: Entity Assignment
+
 # ToDoApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.

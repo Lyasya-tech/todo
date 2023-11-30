@@ -8,6 +8,10 @@ export class TaskPdfService {
   generatePdf(tasks: any[]): void {
     const pdf = new jsPDF();
     const pageHeight = 280;
+    const imageURL = 'assets/images/logo.png'
+    ;
+
+    // console.log(pdf.getFontList());
 
     // Set document properties
     pdf.setProperties({
@@ -17,11 +21,12 @@ export class TaskPdfService {
     });
 
     // Set font
-    pdf.setFont('Arial', 'normal');
+    pdf.setFont('Courier', '');
 
     // Add content to the PDF
     pdf.text('Task Report', 20, 10);
     pdf.setFontSize(12);
+    pdf.addImage(imageURL, 'PNG', 180, 5, 15, 15);
 
     // Iterate over tasks and add them to the PDF
     let yOffset = 20;
@@ -36,7 +41,7 @@ export class TaskPdfService {
       pdf.text(`Status: ${task.status}`, 20, yOffset + 30);
       pdf.text('---------------------------', 20, yOffset + 40);
 
-      yOffset += 50; // Adjust the vertical offset
+      yOffset += 50;
     });
 
     // Save the PDF

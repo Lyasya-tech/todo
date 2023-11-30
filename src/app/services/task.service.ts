@@ -35,7 +35,7 @@ export class TaskService {
   // Create a new task
   createTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task).pipe(
-      tap(createdTask => {
+      tap(() => {
         // After a successful update, fetch and notify the updated task list
         this.fetchAndNotifyTaskList()}));
   }
@@ -44,7 +44,7 @@ export class TaskService {
   updateTask(task: Task): Observable<Task> {
     const url = `${this.apiUrl}/${task.id}`;
     return this.http.put<Task>(url, task).pipe(
-      tap(updatedTask => {
+      tap(() => {
         // After a successful update, fetch and notify the updated task list
         this.fetchAndNotifyTaskList()}));
   }
@@ -53,7 +53,7 @@ export class TaskService {
   deleteTask(taskId: number): Observable<void> {
     const url = `${this.apiUrl}/${taskId}`;
     return this.http.delete<void>(url).pipe(
-      tap(updatedTask => {
+      tap(() => {
         // After a successful update, fetch and notify the updated task list
         this.fetchAndNotifyTaskList()}));
   }
@@ -75,6 +75,17 @@ export class TaskService {
     );
   }
 
+  // Perform filtering based on the due date
+  filterTasksByDueDate(): Observable<Task[]> {
+    const today = new Date();
+/*     const params = { today };
+    return this.http.get<Task[]>(this.apiUrl, { params }); */
+    return this.getTasks().pipe(
+      map(tasks => {
+        return tasks.filter(task => new Date(task.dueDate) <= today);
+      })
+    );
+  }
   
 };
 

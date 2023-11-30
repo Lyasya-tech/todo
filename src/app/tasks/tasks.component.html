@@ -2,24 +2,20 @@
     <div class="col-md-5">
         <h2>Task List</h2>
         <!-- search -->
-        <div class="row">
-            <div class="col-md-5">
-                <div class="input-group">
-                    <!-- <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
-                </div> -->
-                    <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search tasks"
-                        (keyup.enter)="searchTasks()">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
-                    </div>
-                </div>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search tasks by description"
+                (keyup.enter)="searchTasks()">
+            <button class="btn btn-outline-secondary" type="button" (click)="searchTasks()">Search</button>
         </div>
+
+        <button class="btn btn-primary" (click)="toggleDueTasks()" style="margin-top: 10px;">
+            {{ showDueTasks ? 'Show All Tasks' : 'Show Due Tasks' }}
+        </button>
+
         <hr>
 
         <div class="row">
-            <div class="col-md-5 d-flex justify-content-between">
+            <div class="col-md-5">
                 <button class="btn btn-primary" (click)="createNewTask()">Create New Task</button>
             </div>
             <div class="col text-right" style="padding-right: 12px;">

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Assignment } from 'src/app/models/assignment.model';
 import { AssignmentService } from '../assignment.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/users/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { TaskService } from 'src/app/services/task.service';
 
 

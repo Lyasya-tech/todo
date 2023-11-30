@@ -4,7 +4,7 @@ import { Assignment } from 'src/app/models/assignment.model';
 import { Task } from 'src/app/models/task.model';
 import { User } from 'src/app/models/user.model';
 import { AssignmentService } from '../assignment.service';
-import { UserService } from 'src/app/users/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { TaskService } from 'src/app/services/task.service';
 
 

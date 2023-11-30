@@ -4,11 +4,11 @@ import { TasksComponent } from "./tasks/tasks.component";
 import { TaskEditComponent } from "./tasks/task-edit/task-edit.component";
 import { UsersComponent } from "./users/users.component";
 import { taskResolver } from "./tasks/task.resolver";
-import { UserEditComponent } from "./user-edit/user-edit.component";
+import { UserEditComponent } from "./users/user-edit/user-edit.component";
 import { AssignmentsComponent } from "./assignments/assignments.component";
 import { TaskDetailComponent } from "./tasks/task-detail/task-detail.component";
 import { AssignmentDetailComponent } from "./assignments/assignment-detail/assignment-detail.component";
-import { UserDetailComponent } from "./user-detail/user-detail.component";
+import { UserDetailComponent } from "./users/user-detail/user-detail.component";
 import { AssignmentEditComponent } from "./assignments/assignment-edit/assignment-edit.component";
 
 

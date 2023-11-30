@@ -54,7 +54,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     } else {
       this.taskService.updateTask(this.task).subscribe(updatedTask => {
       });
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.router.navigate(['../../'], { relativeTo: this.route });
     }
     /*     this.taskService.updateTask(this.task).subscribe(updatedTask => {
           this.task = updatedTask;

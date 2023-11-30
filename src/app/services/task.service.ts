@@ -10,7 +10,7 @@ import { Task } from '../models/task.model';
 export class TaskService {
   private apiUrl = 'http://localhost:3000/task'; 
   private taskListSubject = new BehaviorSubject<Task[]>([]);
-
+  
   constructor(private http: HttpClient) {
     this.fetchAndNotifyTaskList();
   }

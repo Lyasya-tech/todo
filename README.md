@@ -5,6 +5,8 @@ Peshkova Olga: Entity Task
 Haumer Daniela: Entity User
 Hassan Nada: Entity Assignment
 
+REPO pls see repo/todo.json
+
 # ToDoApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.

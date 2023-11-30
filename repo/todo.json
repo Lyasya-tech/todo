@@ -1,0 +1,146 @@
+{
+  "task": [
+    {
+      "id": 1,
+      "description": "Buy groceries",
+      "dueDate": "2023-11-10",
+      "status": "complete"
+    },
+    {
+      "id": 2,
+      "description": "Finish homework",
+      "dueDate": "2023-11-15",
+      "status": "not started"
+    },
+    {
+      "id": 3,
+      "description": "Go for a run",
+      "dueDate": "2023-11-12",
+      "status": "in progress"
+    },
+    {
+      "id": 4,
+      "description": "Read a book",
+      "dueDate": "2023-11-20",
+      "status": "complete"
+    },
+    {
+      "id": 9,
+      "description": "Complete project presentation",
+      "dueDate": "2023-11-29",
+      "status": "in progress"
+    },
+    {
+      "id": 11,
+      "description": "Complete Angular tutorial",
+      "dueDate": "2023-12-15",
+      "status": "in progress"
+    },
+    {
+      "id": 12,
+      "description": "Write a summary report",
+      "dueDate": "2023-12-15",
+      "status": "not started"
+    },
+    {
+      "id": 13,
+      "description": "Review and update documentation",
+      "dueDate": "2023-12-10",
+      "status": "not started"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "role": "User"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "role": "User"
+    },
+    {
+      "id": 3,
+      "name": "Charlie",
+      "email": "charlie@example.com",
+      "role": "Admin"
+    },
+    {
+      "id": 4,
+      "name": "David",
+      "email": "david@example.com",
+      "role": "User"
+    },
+    {
+      "id": 5,
+      "name": "Eve",
+      "email": "eve@example.com",
+      "role": "User"
+    }
+  ],
+  "assignment": [
+    {
+      "id": 1,
+      "userId": 1,
+      "taskId": 1,
+      "timestamp": "2023-11-15T12:30:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "taskId": 3,
+      "timestamp": "2023-11-16T08:45:00Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "taskId": 2,
+      "timestamp": "2023-11-17T15:20:00Z"
+    },
+    {
+      "id": 4,
+      "userId": "3",
+      "taskId": "1",
+      "timestamp": "2023-11-18T13:22:48.832Z"
+    },
+    {
+      "id": 5,
+      "userId": "2",
+      "taskId": "1",
+      "timestamp": "2023-11-18T13:28:41.184Z"
+    },
+    {
+      "id": 6,
+      "userId": "1",
+      "taskId": "1",
+      "timestamp": "2023-11-18T13:35:34.945Z"
+    },
+    {
+      "id": 7,
+      "userId": "2",
+      "taskId": "1",
+      "timestamp": "2023-11-18T13:46:15.443Z"
+    },
+    {
+      "id": 8,
+      "userId": "3",
+      "taskId": "3",
+      "timestamp": "2023-11-27T18:07:28.378Z"
+    },
+    {
+      "id": 9,
+      "userId": "2",
+      "taskId": "13",
+      "timestamp": "2023-11-30T13:48:56.676Z"
+    },
+    {
+      "id": 10,
+      "userId": "4",
+      "taskId": "2",
+      "timestamp": "2023-11-30T14:11:47.035Z"
+    }
+  ]
+}

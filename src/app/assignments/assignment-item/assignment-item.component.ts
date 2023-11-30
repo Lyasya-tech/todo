@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from 'src/app/models/assignment.model';
 import { Task } from 'src/app/models/task.model';
 import { User } from 'src/app/models/user.model';
-import { AssignmentService } from '../assignment.service';
+import { AssignmentService } from '../../services/assignment.service';
 import { UserService } from 'src/app/users/user.service';
 import { TaskService } from 'src/app/services/task.service';
 

@@ -2,12 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Assignment } from '../models/assignment.model'; 
-import { AssignmentService } from './assignment.service'; 
+import { AssignmentService } from '../services/assignment.service'; 
 import { User } from '../models/user.model';
 import { Task } from '../models/task.model';
 import { UserService } from '../users/user.service';
 import { TaskService } from '../services/task.service';
-import { AssignmentPdfService } from './assignment-pdf.service';
+import { AssignmentPdfService } from '../services/assignment-pdf.service';
 
 @Component({
     selector: 'app-assignments', 

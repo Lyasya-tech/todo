@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Assignment } from 'src/app/models/assignment.model';
-import { AssignmentService } from '../assignment.service';
+import { AssignmentService } from '../../services/assignment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

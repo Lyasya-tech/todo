@@ -1,11 +1,9 @@
 
-    <td id="userCell"> {{ getUserName(assignment.userId) }}</td>
-    <td id="taskCell">{{ getTaskDescription(assignment.taskId) }}</td>
+    <td id="userCell"> <a [routerLink]="['/users', assignment.userId]">{{ getUserName(assignment.userId) }}</a></td>
+    <td id="taskCell"><a  [routerLink]="['/tasks', assignment.taskId]">{{ getTaskDescription(assignment.taskId) }}</a></td>
     <td id="otherCell">{{assignment.timestamp | date : "dd.MM.yyyy HH:mm"}}</td> 
-    <!-- <td> <button class="btn btn-primary" (click)="editAssignment()">edit</button></td> -->
     <td><a class = "btn btn-primary" [routerLink]="[ assignment.id, 'edit']">Edit</a></td>
     <td> <button class="btn btn-danger" (click)="deleteAssignment(assignment.id)">delete</button></td>
-
 
     <td><a [routerLink]="[assignment.id]">Show details</a></td>
     <td><button (click)="emitSelectedAssignment()">@Output demo</button></td>

@@ -53,7 +53,7 @@
             <tbody>
                 <tr assignmentItem
                     *ngFor="let assignment of filteredAssignments" [assignment]="assignment"
-                    (assignmentSelected)="onAssignmentSelected($event)" style="cursor: pointer;">
+                    (assignmentSelected)="onAssignmentSelected($event)">
                 </tr>
             </tbody>
         </table>

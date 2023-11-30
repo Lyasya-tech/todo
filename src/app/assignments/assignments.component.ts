@@ -26,6 +26,7 @@ export class AssignmentsComponent implements OnInit {
   tasks: Task[] = [];
   filteredDate: string = "";
   selectedAssignmentId: number= null;
+  pdfService: any;
 
 
   constructor(
@@ -90,5 +91,9 @@ export class AssignmentsComponent implements OnInit {
   onAssignmentSelected(assignmentId: number){
     this.selectedAssignmentId=assignmentId;
   }
+
+  generatePDF() {
+    this.pdfService.generatePdf(this.filteredAssignments);
+}
 }
 

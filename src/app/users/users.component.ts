@@ -34,7 +34,7 @@ export class UsersComponent implements OnInit {
     }
 
     createNewUser() {
-        this.router.navigate(['new-user'], { relativeTo: this.route });
+        this.router.navigate(['/users/new-user']);
     }
 
     searchUsers() {

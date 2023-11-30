@@ -16,9 +16,8 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/tasks', pathMatch: 'full' },
     { path: 'users', component: UsersComponent, children: [
         { path: 'new-user', component: UserEditComponent, data: { editMode: 'new' } },
-       // { path: 'edit-user/:id', component: UserEditComponent }
-       { path: ':id', component: UserDetailComponent, children: [
-        {path: 'edit', component: UserEditComponent} ] },
+        { path: ':id', component: UserDetailComponent, children: [
+        { path: 'edit', component: UserEditComponent} ] },
         ]
     },
     { path: 'assignments', component: AssignmentsComponent, children: [

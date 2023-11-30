@@ -75,6 +75,17 @@ export class TaskService {
     );
   }
 
+  // Perform filtering based on the due date
+  filterTasksByDueDate(): Observable<Task[]> {
+    const today = new Date();
+/*     const params = { today };
+    return this.http.get<Task[]>(this.apiUrl, { params }); */
+    return this.getTasks().pipe(
+      map(tasks => {
+        return tasks.filter(task => new Date(task.dueDate) <= today);
+      })
+    );
+  }
   
 };
 

@@ -12,10 +12,11 @@ import { TaskPdfService } from '../services/task-pdf.service';
 })
 export class TasksComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
-  subscription: Subscription;
+  showDueTasks: boolean = false;
   searchQuery: string = '';
   filteredTasks: Task[] = [];
   selectedTaskId: number = null;
+  private subscription: Subscription;
 
   constructor(
     private taskService: TaskService,
@@ -60,6 +61,31 @@ export class TasksComponent implements OnInit, OnDestroy {
         console.error('search failed', errMessage);
       }
     });
+  }
+
+  toggleDueTasks() {
+    this.showDueTasks = !this.showDueTasks;
+    this.filterTasksByDueDate();
+  }
+
+  filterTasksByDueDate() {
+    if (this.showDueTasks) {
+      this.taskService.filterTasksByDueDate().subscribe({
+        next: filteredTasks => {
+          this.filteredTasks = filteredTasks;
+        }, error: errMessage => {
+          console.error('filter by date failed');
+        }
+      })
+    } else {
+      this.taskService.getTaskListUpdates().subscribe({
+        next: updatedTasks => {
+          this.filteredTasks = updatedTasks;
+        }, error: (errMessage) => {
+          console.error('error loading tasks', errMessage);
+        }
+      });
+    }
   }
 
   ngOnDestroy(): void {

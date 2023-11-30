@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { UserService } from '../users/user.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({

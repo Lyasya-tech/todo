@@ -5,7 +5,7 @@ import { Assignment } from '../models/assignment.model';
 import { AssignmentService } from '../services/assignment.service'; 
 import { User } from '../models/user.model';
 import { Task } from '../models/task.model';
-import { UserService } from '../users/user.service';
+import { UserService } from '../services/user.service';
 import { TaskService } from '../services/task.service';
 import { AssignmentPdfService } from '../services/assignment-pdf.service';
 

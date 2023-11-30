@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({

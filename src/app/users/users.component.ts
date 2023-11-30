@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { User } from '../models/user.model';
-import { UserService } from './user.service';
-import { UserPdfService } from './user-pdf.service';
+import { UserService } from '../services/user.service';
+import { UserPdfService } from '../services/user-pdf.service';
 
 
 @Component({

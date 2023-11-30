@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 import { Task } from '../models/task.model';
 import { UserService } from '../users/user.service';
 import { TaskService } from '../services/task.service';
+import { AssignmentPdfService } from './assignment-pdf.service';
 
 @Component({
     selector: 'app-assignments', 
@@ -26,7 +27,6 @@ export class AssignmentsComponent implements OnInit {
   tasks: Task[] = [];
   filteredDate: string = "";
   selectedAssignmentId: number= null;
-  pdfService: any;
 
 
   constructor(
@@ -35,6 +35,7 @@ export class AssignmentsComponent implements OnInit {
     private assignmentsService: AssignmentService,
     private userService: UserService,
     private taskService: TaskService,
+    private pdfService: AssignmentPdfService,
   ) 
   {
     console.log('constructor initiated');
@@ -93,7 +94,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   generatePDF() {
-    this.pdfService.generatePdf(this.filteredAssignments);
-}
+    this.pdfService.generatePdf(this.filteredAssignments, this.users, this.tasks);
+  }
 }
 

@@ -15,12 +15,12 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { TaskItemComponent } from './tasks/task-item/task-item.component';
 import { taskResolver } from './tasks/task.resolver';
 import { UserItemComponent } from './users/user-item/user-item.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-import { UserService } from './users/user.service';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserService } from './services/user.service';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentItemComponent } from './assignments/assignment-item/assignment-item.component';
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { AssignmentEditComponent } from './assignments/assignment-edit/assignment-edit.component';
 
 

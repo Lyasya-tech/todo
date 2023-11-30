@@ -56,9 +56,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
       });
       this.router.navigate(['../../'], { relativeTo: this.route });
     }
-    /*     this.taskService.updateTask(this.task).subscribe(updatedTask => {
-          this.task = updatedTask;
-        }); */
   }
 
   cancelForm() {
@@ -72,6 +69,3 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   }
 
 }
-
-// this.route.paramMap.subscribe((params: ParamMap) => {
-// const taskId = +params.get('id'); // Get the task ID from the route parameter
